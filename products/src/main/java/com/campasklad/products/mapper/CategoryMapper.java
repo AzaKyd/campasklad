@@ -6,6 +6,6 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
-    Category toEntity(CategoryDto dto);
+    Category toEntity(com.campasklad.products.dto.CategoryDto dto);
     CategoryDto toDto(Category entity);
 }
