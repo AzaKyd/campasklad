@@ -9,14 +9,16 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "categories")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Используется для AUTO_INCREMENT
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(name = "name", nullable = false)
     String name;
+
 }

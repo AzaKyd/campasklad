@@ -14,13 +14,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ErrorResponseDto> handleBaseServiceException(BaseServiceException exception, WebRequest request) {
-        ErrorResponseDto errorResponseDto = new ErrorResponseDto(
-            request.getContextPath(),
-            HttpStatus.BAD_REQUEST,
-            exception.getMessage(),
-            LocalDateTime.now()
-        );
+//        ErrorResponseDto errorResponseDto = new ErrorResponseDto(
+//            request.getContextPath(),
+//            HttpStatus.BAD_REQUEST,
+//            exception.getMessage(),
+//            LocalDateTime.now()
+//        );
 
-        return new ResponseEntity<>(errorResponseDto, HttpStatus.BAD_REQUEST);
+        return null;
     }
 }
