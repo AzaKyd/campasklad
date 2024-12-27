@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
@@ -27,10 +29,10 @@ public class Product {
     String code;
 
     @Column(name = "cost_price", nullable = false, precision = 38, scale = 2)
-    Double costPrice;
+    BigDecimal costPrice;
 
     @Column(name = "selling_price", nullable = false, precision = 38, scale = 2)
-    Double sellingPrice;
+    BigDecimal sellingPrice;
 
     @Column(name = "picture_path")
     String picturePath;
