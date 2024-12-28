@@ -12,15 +12,15 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(BadRequestException.class)
+    @ExceptionHandler(BaseServiceException.class)
     public ResponseEntity<ErrorResponseDto> handleBaseServiceException(BaseServiceException exception, WebRequest request) {
-//        ErrorResponseDto errorResponseDto = new ErrorResponseDto(
-//            request.getContextPath(),
-//            HttpStatus.BAD_REQUEST,
-//            exception.getMessage(),
-//            LocalDateTime.now()
-//        );
+        ErrorResponseDto errorResponseDto = new ErrorResponseDto(
+            request.getContextPath(),
+            exception.getCode(),
+            exception.getMessage(),
+            LocalDateTime.now()
+        );
 
-        return null;
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponseDto);
     }
 }

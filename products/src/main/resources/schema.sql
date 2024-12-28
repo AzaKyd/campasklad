@@ -1,11 +1,16 @@
 CREATE TABLE categories (
     id              BIGINT          PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name            VARCHAR(255)    NOT NULL
+    name            VARCHAR(255)    NOT NULL UNIQUE,
+
+    created_by      BIGINT          NOT NULL,
+    updated_by      BIGINT,
+    created_at      TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMP       DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE suppliers (
-    id               BIGINT          PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name             VARCHAR(255)    NOT NULL,
+    id               BIGINT         PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name             VARCHAR(255)   NOT NULL,
     phone            VARCHAR(20),
     social_link      VARCHAR(255),
     location         VARCHAR(255),

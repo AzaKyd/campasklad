@@ -10,9 +10,6 @@ import java.util.Objects;
 public class CategoryMapper {
 
     public Category toEntity(CategoryDto categoryDto) {
-        if(Objects.isNull(categoryDto)){
-            return null;
-        }
         return Category.builder()
                 .id(categoryDto.getId())
                 .name(categoryDto.getName())
@@ -20,9 +17,6 @@ public class CategoryMapper {
     }
 
     public CategoryDto toDto(Category category) {
-        if(Objects.isNull(category)){
-            return null;
-        }
         return CategoryDto.builder()
                 .id(category.getId())
                 .name(category.getName())
