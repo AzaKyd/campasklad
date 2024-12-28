@@ -9,6 +9,5 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProductDto {
-    Long id;
+public class ProductVariationDto {
 }
