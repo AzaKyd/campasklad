@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 @Getter
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public enum ApplicationExceptionType {
+public enum ExceptionType {
     ENTITY_NOT_FOUND(HttpStatus.BAD_REQUEST, "Entity not found"),
     VALIDATION_ERROR(HttpStatus.BAD_REQUEST, "Validation failed"),
     ACCESS_DENIED(HttpStatus.BAD_REQUEST, "Access denied");

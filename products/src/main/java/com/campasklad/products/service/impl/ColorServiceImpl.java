@@ -2,8 +2,8 @@ package com.campasklad.products.service.impl;
 
 import com.campasklad.products.dto.ColorDto;
 import com.campasklad.products.entity.Color;
-import com.campasklad.products.exception.ApplicationExceptionType;
-import com.campasklad.products.exception.BaseServiceException;
+import com.campasklad.products.exception.ExceptionType;
+import com.campasklad.products.exception.BaseException;
 import com.campasklad.products.mapper.ColorMapper;
 import com.campasklad.products.repository.ColorRepository;
 import com.campasklad.products.service.ColorService;
@@ -30,7 +30,7 @@ public class ColorServiceImpl implements ColorService {
     @Override
     public ColorDto getCategoryById(Long id) {
         Color color = colorRepository.findById(id)
-                .orElseThrow(() -> new BaseServiceException(ApplicationExceptionType.ENTITY_NOT_FOUND));
+                .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
         return colorMapper.toDto(color);
     }
 
@@ -42,7 +42,7 @@ public class ColorServiceImpl implements ColorService {
     @Override
     public void updateColor(ColorDto categoryDto) {
         Color color = colorRepository.findById(categoryDto.getId())
-                .orElseThrow(() -> new BaseServiceException(ApplicationExceptionType.ENTITY_NOT_FOUND));
+                .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
         color.setName(categoryDto.getName());
         colorRepository.save(color);
     }
@@ -50,7 +50,7 @@ public class ColorServiceImpl implements ColorService {
     @Override
     public void deleteColor(Long id) {
         if (!colorRepository.existsById(id)) {
-            throw new BaseServiceException(ApplicationExceptionType.ENTITY_NOT_FOUND);
+            throw new BaseException(ExceptionType.ENTITY_NOT_FOUND);
         }
         colorRepository.deleteById(id);
     }

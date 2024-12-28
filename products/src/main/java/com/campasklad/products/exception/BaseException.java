@@ -7,11 +7,11 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class BaseServiceException extends RuntimeException {
+public class BaseException extends RuntimeException {
 
     HttpStatus code;
 
-    public BaseServiceException(ApplicationExceptionType exceptionType) {
+    public BaseException(ExceptionType exceptionType) {
         super(exceptionType.getMessage());
         this.code = exceptionType.getCode();
     }
