@@ -29,19 +29,19 @@ public class CategoryController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Void> create(@RequestBody CategoryDto categoryDto) {
+    public ResponseEntity<Void> createColor(@RequestBody CategoryDto categoryDto) {
         categoryService.createCategory(categoryDto);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/update")
-    public ResponseEntity<Void> update(@RequestBody CategoryDto categoryDto) {
+    public ResponseEntity<Void> updateColor(@RequestBody CategoryDto categoryDto) {
         categoryService.updateCategory(categoryDto);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/delete/{id}")
-    public ResponseEntity<Void> update(@PathVariable long id) {
+    public ResponseEntity<Void> updateColor(@PathVariable long id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.ok().build();
     }

@@ -7,14 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class ColorMapper {
 
-    public static ColorDto toDto(Color color) {
+    public ColorDto toDto(Color color) {
         return ColorDto.builder()
                 .id(color.getId())
                 .name(color.getName())
                 .build();
     }
 
-    public static Color toEntity(ColorDto colorDto) {
+    public Color toEntity(ColorDto colorDto) {
         return Color.builder()
                 .id(colorDto.getId())
                 .name(colorDto.getName())

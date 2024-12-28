@@ -30,7 +30,12 @@ CREATE TABLE sizes (
 
 CREATE TABLE colors (
     id              BIGINT          PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name           VARCHAR(50)     NOT NULL
+    name            VARCHAR(50)     NOT NULL UNIQUE,
+
+    created_by      BIGINT          NOT NULL,
+    updated_by      BIGINT,
+    created_at      TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMP       DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE products (
