@@ -25,7 +25,7 @@ public class ProductDto {
     BigDecimal sellingPrice;
     String picturePath;
     String description;
-    Long categoryId; // Используем ID для упрощения
+    Long categoryId;
     Long supplierId;
-    Long seasonId; // Например, название сезона
+    Long seasonId;
 }

@@ -1,6 +1,7 @@
 package com.campasklad.products.service.impl;
 
 import com.campasklad.products.dto.ProductDto;
+import com.campasklad.products.dto.ProductFilterDto;
 import com.campasklad.products.entity.Category;
 import com.campasklad.products.entity.Product;
 import com.campasklad.products.entity.Season;
@@ -13,12 +14,16 @@ import com.campasklad.products.repository.ProductRepository;
 import com.campasklad.products.repository.SeasonRepository;
 import com.campasklad.products.repository.SupplierRepository;
 import com.campasklad.products.service.ProductService;
-import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -105,6 +110,18 @@ public class ProductServiceImpl implements ProductService {
             throw new BaseException(ExceptionType.ENTITY_NOT_FOUND);
         }
         productRepository.deleteById(id);
+    }
+
+    public Page<ProductDto> getFilteredProducts(ProductFilterDto productFilterDto, Pageable pageable) {
+
+        Specification<Product> specification = ProductFilterDto.filterProducts(productFilterDto);
+
+        Page<Product> productPage = productRepository.findAll(specification, pageable);
+
+        List<ProductDto> productDtoList = productPage.stream()
+                .map(productMapper::toDto)
+                .toList();
+        return new PageImpl<>(productDtoList, pageable, productPage.getTotalElements());
     }
 
 }
