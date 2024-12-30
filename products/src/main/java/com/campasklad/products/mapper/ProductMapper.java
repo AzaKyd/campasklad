@@ -5,7 +5,11 @@ import com.campasklad.products.entity.Category;
 import com.campasklad.products.entity.Product;
 import com.campasklad.products.entity.Season;
 import com.campasklad.products.entity.Supplier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class ProductMapper {
@@ -40,5 +44,12 @@ public class ProductMapper {
                 .supplier(supplier)
                 .season(season)
                 .build();
+    }
+
+    public Page<ProductDto> toDtoPage(Page<Product> productPage) {
+        List<ProductDto> productDtoList = productPage.stream()
+                .map(this::toDto)
+                .toList();
+        return new PageImpl<>(productDtoList, productPage.getPageable(), productPage.getTotalElements());
     }
 }

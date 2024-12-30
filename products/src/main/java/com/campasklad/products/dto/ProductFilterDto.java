@@ -26,32 +26,33 @@ public class ProductFilterDto {
 
     public static Specification<Product> filterProducts(ProductFilterDto filterDto) {
         return (root, query, criteriaBuilder) -> {
-            List<Predicate> predicates = new ArrayList<>();
+            Predicate predicate = criteriaBuilder.conjunction();
 
             if (filterDto.getName() != null && !filterDto.getName().isEmpty()) {
-                predicates.add(criteriaBuilder.like(
-                        criteriaBuilder.lower(root.get("name")),
-                        "%" + filterDto.getName().toLowerCase() + "%"
-                ));
+                predicate = criteriaBuilder.and(
+                        predicate,
+                        criteriaBuilder.like(criteriaBuilder.lower(root.get("name")),
+                        "%" + filterDto.getName().toLowerCase() + "%")
+                );
             }
 
             if (filterDto.getCategoryId() != null) {
-                predicates.add(criteriaBuilder.equal(root.get("categoryId"), filterDto.getCategoryId()));
+                predicate = criteriaBuilder.equal(root.get("categoryId"), filterDto.getCategoryId());
             }
 
             if (filterDto.getSeasonId() != null) {
-                predicates.add(criteriaBuilder.equal(root.get("seasonId"), filterDto.getCategoryId()));
+                predicate = criteriaBuilder.equal(root.get("seasonId"), filterDto.getCategoryId());
             }
 
             if (filterDto.getMinPrice() != null) {
-                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("sellingPrice"), filterDto.getMinPrice()));
+                predicate = criteriaBuilder.greaterThanOrEqualTo(root.get("sellingPrice"), filterDto.getMinPrice());
             }
 
             if (filterDto.getMaxPrice() != null) {
-                predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("sellingPrice"), filterDto.getMaxPrice()));
+                predicate = criteriaBuilder.lessThanOrEqualTo(root.get("sellingPrice"), filterDto.getMaxPrice());
             }
 
-            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+            return predicate;
         };
     }
 }

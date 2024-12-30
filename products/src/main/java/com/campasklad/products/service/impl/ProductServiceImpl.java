@@ -116,12 +116,9 @@ public class ProductServiceImpl implements ProductService {
 
         Specification<Product> specification = ProductFilterDto.filterProducts(productFilterDto);
 
-        Page<Product> productPage = productRepository.findAll(specification, pageable);
+        Page<Product> productPage = productRepository.findWithFilter(specification, pageable);
 
-        List<ProductDto> productDtoList = productPage.stream()
-                .map(productMapper::toDto)
-                .toList();
-        return new PageImpl<>(productDtoList, pageable, productPage.getTotalElements());
+        return productMapper.toDtoPage(productPage);
     }
 
 }
