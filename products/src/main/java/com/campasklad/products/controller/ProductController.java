@@ -32,19 +32,19 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Void> createSeason(@RequestBody ProductDto productDto) {
+    public ResponseEntity<Void> createProduct(@RequestBody ProductDto productDto) {
         productService.createProduct(productDto);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/update")
-    public ResponseEntity<Void> updateSeason(@RequestBody ProductDto productDto) {
+    public ResponseEntity<Void> updateProduct(@RequestBody ProductDto productDto) {
         productService.updateProduct(productDto);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteSeason(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.ok().build();
     }
