@@ -10,8 +10,7 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProductVariationDto {
-
+public class ProductVariationFilterDto {
     Long id;
     Long productId;
     Long sizeId;
