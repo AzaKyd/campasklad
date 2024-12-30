@@ -2,21 +2,15 @@ package com.campasklad.products.controller;
 
 import com.campasklad.products.dto.ProductDto;
 import com.campasklad.products.dto.ProductFilterDto;
-import com.campasklad.products.dto.SeasonDto;
-import com.campasklad.products.entity.Product;
 import com.campasklad.products.service.ProductService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/product")
@@ -34,8 +28,7 @@ public class ProductController {
     @GetMapping("/filter-products")
     public ResponseEntity<Page<ProductDto>> filterProducts(@RequestBody ProductFilterDto productFilterDto,
                                                            @PageableDefault Pageable pageable) {
-        productService.getFilteredProducts(productFilterDto, pageable);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(productService.getFilteredProducts(productFilterDto, pageable));
     }
 
     @PostMapping("/create")
