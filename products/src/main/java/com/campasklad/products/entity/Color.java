@@ -16,7 +16,7 @@ import lombok.experimental.SuperBuilder;
 public class Color extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Используется для AUTO_INCREMENT
     Long id;
 
     @Column(name = "name", nullable = false, length = 50)
