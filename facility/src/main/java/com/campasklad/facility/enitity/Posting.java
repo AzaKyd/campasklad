@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "postings")
-public class posting {
+public class Posting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

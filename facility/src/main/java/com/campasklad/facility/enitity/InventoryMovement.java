@@ -16,24 +16,24 @@ public class InventoryMovement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @ManyToOne
     @JoinColumn(name = "facility_id", nullable = false, foreignKey = @ForeignKey(name = "fk_inventory_movements_facility"))
-    private Facility facility;
+    Facility facility;
 
     @Column(name = "product_variation_id", nullable = false)
-    private Long productVariationId;
+    Long productVariationId;
 
     @Column(name = "movement_type", nullable = false)
-    private String movementType;
+    String movementType;
 
     @Column(nullable = false)
-    private Long quantity;
+    Long quantity;
 
     @Column(name = "quantity_before_movement", nullable = false)
-    private Long quantityBeforeMovement;
+    Long quantityBeforeMovement;
 
     @Column(name = "quantity_after_movement", nullable = false)
-    private Long quantityAfterMovement;
+    Long quantityAfterMovement;
 }

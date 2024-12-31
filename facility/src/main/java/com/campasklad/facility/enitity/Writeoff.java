@@ -2,6 +2,7 @@ package com.campasklad.facility.enitity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
@@ -10,19 +11,20 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "writeoffs")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Writeoff {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @Column(name = "product_variation_id", nullable = false)
-    private Long productVariationId;
+    Long productVariationId;
 
     @Column(nullable = false)
-    private Long quantity;
+    Long quantity;
 
     @ManyToOne
     @JoinColumn(name = "facility_id", nullable = false, foreignKey = @ForeignKey(name = "fk_writeoffs_facility"))
-    private Facility facility;
+    Facility facility;
 }

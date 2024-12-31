@@ -16,11 +16,11 @@ public class Facility {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @Column(nullable = false)
-    private String name;
+    String name;
 
     @Column(nullable = false)
-    private String location;
+    String location;
 }

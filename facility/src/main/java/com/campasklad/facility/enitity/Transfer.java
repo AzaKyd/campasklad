@@ -2,6 +2,7 @@ package com.campasklad.facility.enitity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
@@ -10,23 +11,24 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Table(name = "Transfers")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Transfer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @ManyToOne
     @JoinColumn(name = "source_facility_id", nullable = false, foreignKey = @ForeignKey(name = "fk_transfers_source_facility"))
-    private Facility sourceFacility;
+    Facility sourceFacility;
 
     @ManyToOne
     @JoinColumn(name = "destination_facility_id", nullable = false, foreignKey = @ForeignKey(name = "fk_transfers_destination_facility"))
-    private Facility destinationFacility;
+    Facility destinationFacility;
 
     @Column(name = "product_variation_id", nullable = false)
-    private Long productVariationId;
+    Long productVariationId;
 
     @Column(nullable = false)
-    private Long quantity;
+    Long quantity;
 }

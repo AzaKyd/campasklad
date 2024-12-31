@@ -15,18 +15,18 @@ public class Inventory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @Column(name = "product_variation_id", nullable = false)
-    private Long productVariationId;
+    Long productVariationId;
 
     @Column(name = "product_id", nullable = false)
-    private Long productId;
+    Long productId;
 
     @ManyToOne
     @JoinColumn(name = "facility_id", nullable = false, foreignKey = @ForeignKey(name = "fk_facility"))
-    private Facility facility;
+    Facility facility;
 
     @Column(nullable = false)
-    private Long quantity;
+    Long quantity;
 }
