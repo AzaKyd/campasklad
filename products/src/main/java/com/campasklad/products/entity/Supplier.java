@@ -15,6 +15,10 @@ import lombok.experimental.SuperBuilder;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Supplier extends BaseEntity    {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Используется для AUTO_INCREMENT
+    Long id;
+
     @Column(name = "name", nullable = false)
     String name;
 
