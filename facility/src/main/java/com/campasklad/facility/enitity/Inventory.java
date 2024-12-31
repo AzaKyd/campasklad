@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "inventory")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Inventory {
