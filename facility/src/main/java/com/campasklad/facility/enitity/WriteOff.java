@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Table(name = "writeoffs")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Writeoff {
+public class WriteOff {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

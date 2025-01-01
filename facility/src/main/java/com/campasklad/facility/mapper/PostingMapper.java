@@ -3,10 +3,12 @@ package com.campasklad.facility.mapper;
 import com.campasklad.facility.dto.PostingDto;
 import com.campasklad.facility.enitity.Facility;
 import com.campasklad.facility.enitity.Posting;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PostingMapper {
 
-    public PostingDto toPostinDto(Posting posting) {
+    public PostingDto toPostingDto(Posting posting) {
         return PostingDto.builder()
                 .id(posting.getId())
                 .facilityId(posting.getFacility() != null ? posting.getFacility().getId() : null)
