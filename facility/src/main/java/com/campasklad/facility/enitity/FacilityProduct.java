@@ -10,9 +10,9 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Entity
 @Builder
-@Table(name = "inventory")
+@Table(name = "facility_products")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Inventory {
+public class FacilityProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

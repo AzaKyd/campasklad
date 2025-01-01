@@ -6,8 +6,8 @@ CREATE TABLE facilities
     location VARCHAR(255) NOT NULL
 );
 
--- Создание таблицы inventory (инвентарь на складах)
-CREATE TABLE inventory
+-- Создание таблицы facilityProduct (инвентарь на складах)
+CREATE TABLE facility_product
 (
     id                   LONG PRIMARY KEY,
     product_variation_id LONG NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE inventory
 );
 
 -- Создание таблицы inventory_movements (движения инвентаря)
-CREATE TABLE inventory_movements
+CREATE TABLE movements
 (
     id                       LONG PRIMARY KEY,
     facility_id              LONG         NOT NULL,

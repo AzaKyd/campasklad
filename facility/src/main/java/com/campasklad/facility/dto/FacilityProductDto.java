@@ -9,13 +9,11 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class InventoryMovementDto {
+public class FacilityProductDto {
 
     Long id;
-    Long facilityId;
     Long productVariationId;
-    String movementType;
+    Long productId;
+    Long facilityId;
     Long quantity;
-    Long quantityBeforeMovement;
-    Long quantityAfterMovement;
 }

@@ -1,8 +1,8 @@
 package com.campasklad.facility.enums;
 
-public enum InventoryMovementType {
+public enum MovementType {
     TRANSFER,
     POSTING,
-    WRITEOFF,
+    WRITE_OFF,
     SALE
 }

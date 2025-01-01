@@ -29,7 +29,7 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
-    public void saveFacility(FacilityDto facilityDto) {
+    public void createFacility(FacilityDto facilityDto) {
         facilityRepository.save(facilityMapper.toEntity(facilityDto));
     }
 
@@ -37,7 +37,6 @@ public class FacilityServiceImpl implements FacilityService {
     public void updateFacility(FacilityDto facilityDto) {
         Facility facility = facilityRepository.findById(facilityDto.getId())
                 .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
-
         facility.setName(facilityDto.getName());
         facility.setLocation(facilityDto.getLocation());
 

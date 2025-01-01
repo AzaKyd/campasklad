@@ -1,6 +1,6 @@
 package com.campasklad.facility.enitity;
 
-import com.campasklad.facility.enums.InventoryMovementType;
+import com.campasklad.facility.enums.MovementType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -13,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class InventoryMovement {
+public class Movement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,7 @@ public class InventoryMovement {
     Long productVariationId;
 
     @Column(name = "movement_type", nullable = false)
-    InventoryMovementType movementType;
+    MovementType movementType;
 
     @Column(nullable = false)
     Long quantity;
