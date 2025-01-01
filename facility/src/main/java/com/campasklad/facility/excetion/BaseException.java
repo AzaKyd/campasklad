@@ -1,4 +1,4 @@
-package com.campasklad.products.exception;
+package com.campasklad.facility.excetion;
 
 import lombok.AccessLevel;
 import lombok.Getter;
