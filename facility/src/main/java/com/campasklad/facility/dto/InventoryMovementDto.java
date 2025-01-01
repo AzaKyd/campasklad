@@ -1,6 +1,5 @@
 package com.campasklad.facility.dto;
 
-import com.campasklad.facility.enitity.Facility;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -10,10 +9,10 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class InventoryMovermentDto {
+public class InventoryMovementDto {
 
     Long id;
-    Facility facility;
+    Long facilityId;
     Long productVariationId;
     String movementType;
     Long quantity;

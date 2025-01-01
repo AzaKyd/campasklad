@@ -1,5 +1,6 @@
 package com.campasklad.facility.enitity;
 
+import com.campasklad.facility.enums.InventoryMovementType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -26,7 +27,7 @@ public class InventoryMovement {
     Long productVariationId;
 
     @Column(name = "movement_type", nullable = false)
-    String movementType;
+    InventoryMovementType movementType;
 
     @Column(nullable = false)
     Long quantity;

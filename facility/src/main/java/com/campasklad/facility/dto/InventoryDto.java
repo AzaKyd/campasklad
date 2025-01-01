@@ -15,6 +15,6 @@ public class InventoryDto {
     Long id;
     Long productVariationId;
     Long productId;
-    Long facility;
+    Long facilityId;
     Long quantity;
 }

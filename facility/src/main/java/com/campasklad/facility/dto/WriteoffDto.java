@@ -15,5 +15,5 @@ public class WriteoffDto {
     Long id;
     Long productVariationId;
     Long quantity;
-    Facility facility;
+    Long facilityId;
 }

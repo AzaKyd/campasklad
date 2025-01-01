@@ -1,6 +1,7 @@
 package com.campasklad.facility.mapper;
 
 import com.campasklad.facility.dto.InventoryDto;
+import com.campasklad.facility.enitity.Facility;
 import com.campasklad.facility.enitity.Inventory;
 import org.springframework.stereotype.Component;
 
@@ -13,17 +14,17 @@ public class InventoryMapper {
                 .productId(inventory.getProductId())
                 .quantity(inventory.getQuantity())
                 .productVariationId(inventory.getProductVariationId())
-                .facility(inventory.getFacility())
+                .facilityId(inventory.getFacility() != null ? inventory.getFacility().getId() : null)
                 .build();
     }
 
-    public Inventory toEntity(InventoryDto inventoryDto) {
+    public Inventory toEntity(InventoryDto inventoryDto, Facility facility) {
         return Inventory.builder()
                 .id(inventoryDto.getId())
                 .productId(inventoryDto.getProductId())
                 .quantity(inventoryDto.getQuantity())
                 .productVariationId(inventoryDto.getProductVariationId())
-                .facility(inventoryDto.getFacility().)
+                .facility(facility)
                 .build();
     }
 }

@@ -13,8 +13,8 @@ import lombok.experimental.FieldDefaults;
 public class TransferDto {
 
     Long id;
-    Facility sourceFacility;
-    Facility destinationFacility;
+    Long sourceFacilityId;
+    Long destinationFacilityId;
     Long productVariationId;
     Long quantity;
 }
