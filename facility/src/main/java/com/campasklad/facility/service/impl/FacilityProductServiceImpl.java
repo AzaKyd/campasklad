@@ -1,12 +1,12 @@
 package com.campasklad.facility.service.impl;
 
-import com.campasklad.facility.dto.FacilityProductDto;
+import com.campasklad.facility.dto.product.FacilityProductDto;
 import com.campasklad.facility.enitity.Facility;
 import com.campasklad.facility.excetion.BaseException;
 import com.campasklad.facility.excetion.ExceptionType;
-import com.campasklad.facility.mapper.FacilityProductMapper;
+import com.campasklad.facility.mapper.product.FacilityProductMapper;
 import com.campasklad.facility.repository.FaciltiyRepository;
-import com.campasklad.facility.repository.FacilityProductRepository;
+import com.campasklad.facility.repository.product.FacilityProductRepository;
 import com.campasklad.facility.service.FacilityProductService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

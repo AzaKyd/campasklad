@@ -1,5 +1,6 @@
-package com.campasklad.facility.enitity;
+package com.campasklad.facility.enitity.product;
 
+import com.campasklad.facility.enitity.Facility;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;

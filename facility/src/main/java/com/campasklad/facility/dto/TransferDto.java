@@ -1,8 +1,11 @@
 package com.campasklad.facility.dto;
 
 import com.campasklad.facility.enitity.Facility;
+import com.campasklad.facility.enums.DocumentStatus;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import javax.tools.DocumentationTool;
 
 @Getter
 @Setter
@@ -15,6 +18,5 @@ public class TransferDto {
     Long id;
     Long sourceFacilityId;
     Long destinationFacilityId;
-    Long productVariationId;
-    Long quantity;
+    DocumentStatus status;
 }

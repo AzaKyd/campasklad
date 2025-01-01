@@ -1,5 +1,6 @@
 package com.campasklad.facility.enitity;
 
+import com.campasklad.facility.enums.DocumentStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,17 +12,14 @@ import lombok.*;
 @AllArgsConstructor
 @Table(name = "postings")
 public class Posting {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "product_variation_id", nullable = false)
-    private Long productVariationId;
-
-    @Column(nullable = false)
-    private Long quantity;
-
     @ManyToOne
-    @JoinColumn(name = "facility_id", nullable = false, foreignKey = @ForeignKey(name = "fk_postings_facility"))
+    @JoinColumn(name = "facility_id", nullable = false)
     private Facility facility;
+
+    private DocumentStatus status;
 }

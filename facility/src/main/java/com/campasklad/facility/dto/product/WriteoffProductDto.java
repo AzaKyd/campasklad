@@ -1,5 +1,6 @@
-package com.campasklad.facility.dto;
+package com.campasklad.facility.dto.product;
 
+import com.campasklad.facility.enitity.Writeoff;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -9,10 +10,10 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class WriteOffDto {
+public class WriteoffProductDto {
 
     Long id;
     Long productVariationId;
     Long quantity;
-    Long facilityId;
+    Long writeoff;
 }

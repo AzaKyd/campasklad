@@ -1,8 +1,8 @@
-package com.campasklad.facility.mapper;
+package com.campasklad.facility.mapper.product;
 
-import com.campasklad.facility.dto.FacilityProductDto;
+import com.campasklad.facility.dto.product.FacilityProductDto;
 import com.campasklad.facility.enitity.Facility;
-import com.campasklad.facility.enitity.FacilityProduct;
+import com.campasklad.facility.enitity.product.FacilityProduct;
 import org.springframework.stereotype.Component;
 
 @Component

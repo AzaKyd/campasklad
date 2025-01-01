@@ -1,6 +1,6 @@
 package com.campasklad.facility.controller;
 
-import com.campasklad.facility.dto.FacilityProductDto;
+import com.campasklad.facility.dto.product.FacilityProductDto;
 import com.campasklad.facility.service.FacilityProductService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class FacilityProductController {
 
     FacilityProductService facilityProductService;
 
-    @PostMapping("/create-inventory")
+    @PostMapping("/create-facility-product")
     public ResponseEntity<Void> createInventory(@RequestBody FacilityProductDto facilityProductDto) {
         facilityProductService.createInventory(facilityProductDto);
         return ResponseEntity.ok().build();

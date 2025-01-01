@@ -1,6 +1,6 @@
-package com.campasklad.facility.repository;
+package com.campasklad.facility.repository.product;
 
-import com.campasklad.facility.enitity.FacilityProduct;
+import com.campasklad.facility.enitity.product.FacilityProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

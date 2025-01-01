@@ -1,6 +1,6 @@
 package com.campasklad.facility.service;
 
-import com.campasklad.facility.dto.FacilityProductDto;
+import com.campasklad.facility.dto.product.FacilityProductDto;
 
 public interface FacilityProductService {
 

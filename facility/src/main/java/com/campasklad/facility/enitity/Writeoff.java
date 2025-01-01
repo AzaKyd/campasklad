@@ -1,5 +1,6 @@
 package com.campasklad.facility.enitity;
 
+import com.campasklad.facility.enums.DocumentStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -12,19 +13,15 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Table(name = "writeoffs")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class WriteOff {
+public class Writeoff {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-
-    @Column(name = "product_variation_id", nullable = false)
-    Long productVariationId;
-
-    @Column(nullable = false)
-    Long quantity;
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "facility_id", nullable = false, foreignKey = @ForeignKey(name = "fk_writeoffs_facility"))
-    Facility facility;
+    @JoinColumn(name = "facility_id", nullable = false)
+    private Facility facility;
+
+    private DocumentStatus status;
 }

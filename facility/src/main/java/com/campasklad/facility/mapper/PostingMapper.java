@@ -12,8 +12,7 @@ public class PostingMapper {
         return PostingDto.builder()
                 .id(posting.getId())
                 .facilityId(posting.getFacility() != null ? posting.getFacility().getId() : null)
-                .productVariationId(posting.getProductVariationId())
-                .quantity(posting.getQuantity())
+                .status(posting.getStatus())
                 .build();
     }
 
@@ -21,8 +20,7 @@ public class PostingMapper {
         return Posting.builder()
                 .id(postingDto.getId())
                 .facility(facility)
-                .productVariationId(postingDto.getProductVariationId())
-                .quantity(postingDto.getQuantity())
+                .status(postingDto.getStatus())
                 .build();
     }
 }

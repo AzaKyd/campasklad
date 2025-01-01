@@ -14,8 +14,7 @@ public class TransferMapper {
                 .id(transfer.getId())
                 .sourceFacilityId(transfer.getSourceFacility() != null ? transfer.getSourceFacility().getId() : null)
                 .destinationFacilityId(transfer.getDestinationFacility() != null ? transfer.getDestinationFacility().getId() : null)
-                .productVariationId(transfer.getProductVariationId())
-                .quantity(transfer.getQuantity())
+                .status(transfer.getStatus())
                 .build();
     }
 
@@ -24,8 +23,7 @@ public class TransferMapper {
                 .id(transferDto.getId())
                 .sourceFacility(sourceFacility)
                 .destinationFacility(destinationFacility)
-                .productVariationId(transferDto.getProductVariationId())
-                .quantity(transferDto.getQuantity())
+                .status(transferDto.getStatus())
                 .build();
     }
 }

@@ -1,5 +1,6 @@
 package com.campasklad.facility.enitity;
 
+import com.campasklad.facility.enums.DocumentStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -16,19 +17,15 @@ public class Transfer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "source_facility_id", nullable = false, foreignKey = @ForeignKey(name = "fk_transfers_source_facility"))
-    Facility sourceFacility;
+    @JoinColumn(name = "source_facility_id", nullable = false)
+    private Facility sourceFacility;
 
     @ManyToOne
-    @JoinColumn(name = "destination_facility_id", nullable = false, foreignKey = @ForeignKey(name = "fk_transfers_destination_facility"))
-    Facility destinationFacility;
+    @JoinColumn(name = "destination_facility_id", nullable = false)
+    private Facility destinationFacility;
 
-    @Column(name = "product_variation_id", nullable = false)
-    Long productVariationId;
-
-    @Column(nullable = false)
-    Long quantity;
+    private DocumentStatus status;
 }

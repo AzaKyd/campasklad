@@ -1,4 +1,4 @@
-package com.campasklad.facility.dto;
+package com.campasklad.facility.dto.product;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
