@@ -4,11 +4,12 @@ import com.campasklad.facility.enitity.BaseEntity;
 import com.campasklad.facility.enitity.Posting;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "posting_products")

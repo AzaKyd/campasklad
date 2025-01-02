@@ -34,8 +34,8 @@ public class FacilityController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/get-facility/{id}")
-    public ResponseEntity<Void> createFacility(@PathVariable Long id) {
+    @GetMapping("/delete-facility/{id}")
+    public ResponseEntity<Void> deleteFacility(@PathVariable Long id) {
         facilityService.deleteFacility(id);
         return ResponseEntity.ok().build();
     }

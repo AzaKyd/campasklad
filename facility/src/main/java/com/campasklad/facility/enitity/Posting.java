@@ -3,15 +3,16 @@ package com.campasklad.facility.enitity;
 import com.campasklad.facility.enums.DocumentStatus;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @Entity
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "postings")
-public class Posting {
+public class Posting extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

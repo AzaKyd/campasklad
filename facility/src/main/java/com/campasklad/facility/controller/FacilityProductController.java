@@ -20,7 +20,7 @@ public class FacilityProductController {
     FacilityProductService facilityProductService;
 
     @PostMapping("/create-facility-product")
-    public ResponseEntity<Void> createInventory(@RequestBody FacilityProductDto facilityProductDto) {
+    public ResponseEntity<Void> createFacilityProduct(@RequestBody FacilityProductDto facilityProductDto) {
         facilityProductService.createInventory(facilityProductDto);
         return ResponseEntity.ok().build();
     }

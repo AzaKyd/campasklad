@@ -17,9 +17,8 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@SuperBuilder
 @NoArgsConstructor
-@MappedSuperclass
+@SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class BaseEntity {
 

@@ -4,28 +4,29 @@ import com.campasklad.facility.enums.DocumentStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Table(name = "Transfers")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Transfer {
+public class Transfer extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @ManyToOne
     @JoinColumn(name = "source_facility_id", nullable = false)
-    private Facility sourceFacility;
+    Facility sourceFacility;
 
     @ManyToOne
     @JoinColumn(name = "destination_facility_id", nullable = false)
-    private Facility destinationFacility;
+    Facility destinationFacility;
 
-    private DocumentStatus status;
+    DocumentStatus status;
 }

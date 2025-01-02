@@ -4,12 +4,13 @@ import com.campasklad.facility.enitity.BaseEntity;
 import com.campasklad.facility.enitity.Transfer;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "transfer_products")
 public class TransferProduct extends BaseEntity {
