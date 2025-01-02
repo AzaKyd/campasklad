@@ -2,15 +2,15 @@ package com.campasklad.facility.enums;
 
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public enum ProductApiPath {
-    BASE_URL("http://localhost:8080"),
+    BASE_URL("localhost:8080"),
     GET_PRODUCT("/get-product");
     String path;
 }
