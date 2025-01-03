@@ -67,3 +67,73 @@ CREATE TABLE facility_products
     product_id           BIGINT NOT NULL,
     FOREIGN KEY (facility_id) REFERENCES facilities (id)
 );
+
+
+-- Inserting default data into facilities table
+INSERT INTO facilities (id, name, location)
+VALUES (1, 'Facility 1', 'Location 1'),
+       (2, 'Facility 2', 'Location 2'),
+       (3, 'Facility 3', 'Location 3'),
+       (4, 'Facility 4', 'Location 4'),
+       (5, 'Facility 5', 'Location 5');
+
+-- Inserting default data into postings table
+INSERT INTO postings (id, facility_id, status)
+VALUES (1, 1, 'Status 1'),
+       (2, 2, 'Status 2'),
+       (3, 3, 'Status 3'),
+       (4, 4, 'Status 4'),
+       (5, 5, 'Status 5');
+
+-- Inserting default data into posting_products table
+INSERT INTO posting_products (id, product_variation_id, quantity, posting_id)
+VALUES (1, 1, 10, 1),
+       (2, 2, 20, 2),
+       (3, 3, 30, 3),
+       (4, 4, 40, 4),
+       (5, 5, 50, 5);
+
+-- Inserting default data into writeoffs table
+INSERT INTO writeoffs (id, facility_id, status)
+VALUES (1, 1, 'Writeoff Status 1'),
+       (2, 2, 'Writeoff Status 2'),
+       (3, 3, 'Writeoff Status 3'),
+       (4, 4, 'Writeoff Status 4'),
+       (5, 5, 'Writeoff Status 5');
+
+-- Inserting default data into writeoff_products table
+INSERT INTO writeoff_products (id, product_variation_id, quantity, writeoff_id)
+VALUES (1, 1, 5, 1),
+       (2, 2, 10, 2),
+       (3, 3, 15, 3),
+       (4, 4, 20, 4),
+       (5, 5, 25, 5);
+
+-- Inserting default data into transfers table
+INSERT INTO transfers (id, source_facility_id, destination_facility_id, status)
+VALUES (1, 1, 2, 'Transfer Status 1'),
+       (2, 2, 3, 'Transfer Status 2'),
+       (3, 3, 4, 'Transfer Status 3'),
+       (4, 4, 5, 'Transfer Status 4'),
+       (5, 5, 1, 'Transfer Status 5');
+
+-- Inserting default data into transfer_products table
+INSERT INTO transfer_products (id, product_variation_id, quantity, transfer_id)
+VALUES (1, 1, 2, 1),
+       (2, 2, 4, 2),
+       (3, 3, 6, 3),
+       (4, 4, 8, 4),
+       (5, 5, 10, 5);
+
+-- Inserting default data into facility_products table
+INSERT INTO facility_products (id, product_variation_id, facility_id, quantity, product_id)
+VALUES (1, 1, 2, 3, 1),
+       (2, 2, 3, 6, 2),
+       (3, 3, 4, 9, 3),
+       (4, 4, 5, 12, 4),
+       (5, 5, 1, 15, 5),
+       (6, 6, 2, 18, 6),
+       (7, 7, 3, 21, 7),
+       (8, 8, 4, 24, 8),
+       (9, 9, 5, 27, 9),
+       (10, 10, 1, 30, 10);

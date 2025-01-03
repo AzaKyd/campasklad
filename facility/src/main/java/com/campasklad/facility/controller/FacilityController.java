@@ -1,7 +1,7 @@
 package com.campasklad.facility.controller;
 
+import com.campasklad.facility.client.ProductApiClient;
 import com.campasklad.facility.dto.FacilityDto;
-import com.campasklad.facility.enitity.Facility;
 import com.campasklad.facility.service.FacilityService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class FacilityController {
 
     FacilityService facilityService;
+    ProductApiClient productApiClient;
 
     @GetMapping("/get-facility/{id}")
     public ResponseEntity<FacilityDto> getFacility(@PathVariable Long id) {

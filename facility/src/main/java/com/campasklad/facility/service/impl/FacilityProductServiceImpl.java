@@ -11,6 +11,8 @@ import com.campasklad.facility.service.FacilityProductService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,10 +24,16 @@ public class FacilityProductServiceImpl implements FacilityProductService {
     FaciltiyRepository faciltiyRepository;
     FacilityProductMapper facilityProductMapper;
 
+
     @Override
-    public void createInventory(FacilityProductDto facilityProductDto) {
+    public void createFacilityProduct(FacilityProductDto facilityProductDto) {
         Facility facility = faciltiyRepository.findById(facilityProductDto.getFacilityId())
                 .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
         facilityProductRepository.save(facilityProductMapper.toEntity(facilityProductDto, facility));
+    }
+
+    @Override
+    public Page<FacilityProductDto> getFacilityProducts(Pageable pageable) {
+        return null;
     }
 }

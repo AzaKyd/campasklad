@@ -11,6 +11,6 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public enum ProductApiPath {
     BASE_URL("localhost:8080"),
-    GET_PRODUCT("/get-product");
+    GET_PRODUCT("/get-product/");
     String path;
 }

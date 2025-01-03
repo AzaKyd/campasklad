@@ -22,6 +22,7 @@ public class ProductApiResponse {
     String picturePath;
     String description;
     Long categoryId;
+    String categoryName;
     Long supplierId;
     Long seasonId;
 }

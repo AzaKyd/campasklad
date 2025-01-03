@@ -25,6 +25,7 @@ public class ProductMapper {
                 .picturePath(product.getPicturePath())
                 .description(product.getDescription())
                 .categoryId(product.getCategory() != null ? product.getCategory().getId() : null)
+                .categoryName(product.getCategory() != null ? product.getCategory().getName() : null)
                 .supplierId(product.getSupplier() != null ? product.getSupplier().getId() : null)
                 .supplierId(product.getSeason() != null ? product.getSeason().getId() : null)
                 .build();

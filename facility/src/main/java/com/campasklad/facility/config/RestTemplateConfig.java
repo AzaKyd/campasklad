@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class RestTemplateConfig {
 
-    private static final String BASE_URL = "http://external-service.com/api";
+    private static final String BASE_URL = "http://localhost:8080/api/product";
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder  builder) {

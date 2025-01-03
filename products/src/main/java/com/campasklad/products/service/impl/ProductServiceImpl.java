@@ -14,14 +14,14 @@ import com.campasklad.products.repository.ProductRepository;
 import com.campasklad.products.repository.SeasonRepository;
 import com.campasklad.products.repository.SupplierRepository;
 import com.campasklad.products.service.ProductService;
+import com.campasklad.products.dto.internal.ProductResponseDto;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +29,9 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class ProductServiceImpl implements ProductService {
+public class
+
+ProductServiceImpl implements ProductService {
 
     ProductRepository productRepository;
     CategoryRepository categoryRepository;
@@ -119,6 +121,13 @@ public class ProductServiceImpl implements ProductService {
         Page<Product> productPage = productRepository.findWithFilter(specification, pageable);
 
         return productMapper.toDtoPage(productPage);
+    }
+
+    public List<ProductDto> getProductsByIds(List<Long> ids) {
+        List<Product> products = productRepository.findAllById(ids);
+        return products.stream()
+                .map(productMapper::toDto)
+                .toList();
     }
 
 }

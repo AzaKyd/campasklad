@@ -18,10 +18,10 @@ public class ProductApiClient {
 
     RestTemplate restTemplate;
 
-    public ProductApiResponse getProduct() {
+    public ProductApiResponse getProduct(Long id) {
         ResponseEntity<ProductApiResponse> response = restTemplate.exchange(
-                ProductApiPath.GET_PRODUCT.getPath(),
-                HttpMethod.POST,
+                ProductApiPath.GET_PRODUCT.getPath().concat(String.valueOf(id)),
+                HttpMethod.GET,
                 HttpEntity.EMPTY,
                 ProductApiResponse.class
         );

@@ -15,7 +15,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProductDto {
+public class
+ProductDto {
 
     Long id;
     String name;
@@ -26,6 +27,7 @@ public class ProductDto {
     String picturePath;
     String description;
     Long categoryId;
+    String categoryName;
     Long supplierId;
     Long seasonId;
 }
