@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DisplayFacilityProductDto {
 
-    Long productId;
+    Long id;
     String name;
     String barcode;
     String code;
@@ -25,5 +25,5 @@ public class DisplayFacilityProductDto {
     String categoryName;
     Long supplierId;
     Long seasonId;
-    Long totalQuantity;
+    BigDecimal totalQuantity;
 }

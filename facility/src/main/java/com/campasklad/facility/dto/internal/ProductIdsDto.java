@@ -3,6 +3,8 @@ package com.campasklad.facility.dto.internal;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Builder
@@ -10,6 +12,6 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductIdsDto {
-    private Long productId;
-    private Long totalQuantity;
+    Long productId;
+    BigDecimal totalQuantity;
 }

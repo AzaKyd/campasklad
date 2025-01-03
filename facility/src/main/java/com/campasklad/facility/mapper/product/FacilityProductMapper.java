@@ -33,7 +33,7 @@ public class FacilityProductMapper {
 
     public DisplayFacilityProductDto toDisplayDto(ProductResponseDto productResponseDto, ProductIdsDto productIdsDto) {
         return DisplayFacilityProductDto.builder()
-                .productId(productResponseDto.getProductId())
+                .id(productResponseDto.getId())
                 .name(productResponseDto.getName())
                 .barcode(productResponseDto.getBarcode())
                 .code(productResponseDto.getCode())

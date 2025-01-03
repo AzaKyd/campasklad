@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductResponseDto {
 
-    Long productId;
+    Long id;
     String name;
     String barcode;
     String code;

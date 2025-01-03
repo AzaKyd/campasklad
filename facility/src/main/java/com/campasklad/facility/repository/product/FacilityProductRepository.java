@@ -22,7 +22,7 @@ public interface FacilityProductRepository extends JpaRepository<FacilityProduct
     """,
             nativeQuery = true)
     List<ProductIdsDto> findGroupedProducts(
-            @Param("facilityId") Long facilityId,
+            Long facilityId,
             Pageable pageable
     );
 }

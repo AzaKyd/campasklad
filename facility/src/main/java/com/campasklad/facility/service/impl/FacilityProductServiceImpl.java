@@ -51,7 +51,7 @@ public class FacilityProductServiceImpl implements FacilityProductService {
 
 
         Map<Long, ProductResponseDto> responseProductMap = productResponseDtos.stream()
-                .collect(Collectors.toMap(ProductResponseDto::getProductId, dto -> dto));
+                .collect(Collectors.toMap(ProductResponseDto::getId, dto -> dto));
 
         List<DisplayFacilityProductDto> facilityProductDtos = facilityProductDtoList.stream()
                 .map(productIdsDto -> {

@@ -12,6 +12,6 @@ import lombok.experimental.FieldDefaults;
 public enum ProductApiPath {
     BASE_URL("localhost:8080"),
     GET_PRODUCT("/get-product/"),
-    GET_PRODUCTS_BY_IDS("/get-products-by-ids"),;
+    GET_PRODUCTS_BY_IDS("/get-facility-products"),;
     String path;
 }

@@ -15,8 +15,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class
-ProductDto {
+public class ProductDto {
 
     Long id;
     String name;

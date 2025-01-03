@@ -1,49 +1,49 @@
 CREATE TABLE facilities
 (
-    id       BIGINT PRIMARY KEY,
+    id       LONG PRIMARY KEY,
     name     VARCHAR(255) NOT NULL,
     location VARCHAR(255)
 );
 
 CREATE TABLE postings
 (
-    id          BIGINT PRIMARY KEY,
-    facility_id BIGINT NOT NULL,
+    id          LONG PRIMARY KEY,
+    facility_id LONG NOT NULL,
     status      VARCHAR(50),
     FOREIGN KEY (facility_id) REFERENCES facilities (id)
 );
 
 CREATE TABLE posting_products
 (
-    id                   BIGINT PRIMARY KEY,
-    product_variation_id BIGINT NOT NULL,
-    quantity             BIGINT NOT NULL,
-    posting_id           BIGINT NOT NULL,
+    id                   LONG PRIMARY KEY,
+    product_variation_id LONG NOT NULL,
+    quantity             LONG NOT NULL,
+    posting_id           LONG NOT NULL,
     FOREIGN KEY (posting_id) REFERENCES postings (id)
 );
 
 CREATE TABLE writeoffs
 (
-    id          BIGINT PRIMARY KEY,
-    facility_id BIGINT NOT NULL,
+    id          LONG PRIMARY KEY,
+    facility_id LONG NOT NULL,
     status      VARCHAR(50),
     FOREIGN KEY (facility_id) REFERENCES facilities (id)
 );
 
 CREATE TABLE writeoff_products
 (
-    id                   BIGINT PRIMARY KEY,
-    product_variation_id BIGINT NOT NULL,
-    quantity             BIGINT NOT NULL,
-    writeoff_id          BIGINT NOT NULL,
+    id                   LONG PRIMARY KEY,
+    product_variation_id LONG NOT NULL,
+    quantity             LONG NOT NULL,
+    writeoff_id          LONG NOT NULL,
     FOREIGN KEY (writeoff_id) REFERENCES writeoffs (id)
 );
 
 CREATE TABLE transfers
 (
-    id                      BIGINT PRIMARY KEY,
-    source_facility_id      BIGINT NOT NULL,
-    destination_facility_id BIGINT NOT NULL,
+    id                      LONG PRIMARY KEY,
+    source_facility_id      LONG NOT NULL,
+    destination_facility_id LONG NOT NULL,
     status                  VARCHAR(50),
     FOREIGN KEY (source_facility_id) REFERENCES facilities (id),
     FOREIGN KEY (destination_facility_id) REFERENCES facilities (id)
@@ -51,20 +51,20 @@ CREATE TABLE transfers
 
 CREATE TABLE transfer_products
 (
-    id                   BIGINT PRIMARY KEY,
-    product_variation_id BIGINT NOT NULL,
-    quantity             BIGINT NOT NULL,
-    transfer_id          BIGINT NOT NULL,
+    id                   LONG PRIMARY KEY,
+    product_variation_id LONG NOT NULL,
+    quantity             LONG NOT NULL,
+    transfer_id          LONG NOT NULL,
     FOREIGN KEY (transfer_id) REFERENCES transfers (id)
 );
 
 CREATE TABLE facility_products
 (
-    id                   BIGINT PRIMARY KEY,
-    product_variation_id BIGINT NOT NULL,
-    facility_id          BIGINT NOT NULL,
-    quantity             BIGINT NOT NULL,
-    product_id           BIGINT NOT NULL,
+    id                   LONG PRIMARY KEY,
+    product_variation_id LONG NOT NULL,
+    facility_id          LONG NOT NULL,
+    quantity             LONG NOT NULL,
+    product_id           LONG NOT NULL,
     FOREIGN KEY (facility_id) REFERENCES facilities (id)
 );
 
@@ -130,10 +130,10 @@ INSERT INTO facility_products (id, product_variation_id, facility_id, quantity, 
 VALUES (1, 1, 2, 3, 1),
        (2, 2, 3, 6, 2),
        (3, 3, 4, 9, 3),
-       (4, 4, 5, 12, 4),
-       (5, 5, 1, 15, 5),
-       (6, 6, 2, 18, 6),
-       (7, 7, 3, 21, 7),
-       (8, 8, 4, 24, 8),
-       (9, 9, 5, 27, 9),
-       (10, 10, 1, 30, 10);
+       (4, 4, 5, 12, 1),
+       (5, 5, 1, 15, 2),
+       (6, 6, 2, 18, 3),
+       (7, 7, 3, 21, 4),
+       (8, 8, 4, 24, 1),
+       (9, 9, 5, 27, 2),
+       (10, 10, 1, 30, 3);

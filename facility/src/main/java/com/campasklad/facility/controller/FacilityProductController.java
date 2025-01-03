@@ -1,5 +1,6 @@
 package com.campasklad.facility.controller;
 
+import com.campasklad.facility.dto.product.DisplayFacilityProductDto;
 import com.campasklad.facility.dto.product.FacilityProductDto;
 import com.campasklad.facility.service.FacilityProductService;
 import lombok.AccessLevel;
@@ -20,9 +21,9 @@ public class FacilityProductController {
     FacilityProductService facilityProductService;
 
     @GetMapping("/get-facility-products/{facilityId}")
-    public ResponseEntity<Page<FacilityProductDto>> getFacilityProducts(@PathVariable Long facilityId, @PageableDefault Pageable pageable) {
+    public ResponseEntity<Page<DisplayFacilityProductDto>> getFacilityProducts(@PathVariable Long facilityId, @PageableDefault Pageable pageable) {
         facilityProductService.getFacilityProducts(facilityId, pageable);
-        return null;
+        return ResponseEntity.ok().body(facilityProductService.getFacilityProducts(facilityId, pageable));
     }
 
     @PostMapping("/create-facility-product")
