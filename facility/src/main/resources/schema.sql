@@ -174,11 +174,11 @@ VALUES (1, 1, 1, 100, 1, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        (5, 5, 5, 500, 5, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO postings (id, facility_id, status, created_by, updated_by, created_at, updated_at)
-VALUES (1, 1, 'Pending', 1, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (2, 2, 'Completed', 2, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (3, 3, 'In Progress', 3, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (4, 4, 'Approved', 4, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (5, 5, 'Rejected', 5, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+VALUES (1, 1, 'NEW', 1, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (2, 2, 'NEW', 2, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (3, 3, 'NEW', 3, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (4, 4, 'NEW', 4, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (5, 5, 'NEW', 5, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO posting_products (id, product_variation_id, quantity, posting_id, created_by, updated_by, created_at,
                               updated_at)
@@ -189,11 +189,11 @@ VALUES (1, 1, 50, 1, 1, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        (5, 5, 30, 5, 5, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO writeoffs (id, facility_id, status, created_by, updated_by, created_at, updated_at)
-VALUES (1, 1, 'Approved', 1, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (2, 2, 'Rejected', 2, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (3, 3, 'Pending', 3, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (4, 4, 'Completed', 4, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (5, 5, 'In Progress', 5, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+VALUES (1, 1, 'NEW', 1, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (2, 2, 'NEW', 2, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (3, 3, 'NEW', 3, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (4, 4, 'NEW', 4, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (5, 5, 'NEW', 5, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO writeoff_products (id, product_variation_id, quantity, writeoff_id, created_by, updated_by, created_at,
                                updated_at)
@@ -205,11 +205,11 @@ VALUES (1, 1, 20, 1, 1, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 
 INSERT INTO transfers (id, source_facility_id, destination_facility_id, status, created_by, updated_by, created_at,
                        updated_at)
-VALUES (1, 1, 2, 'In Progress', 1, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (2, 2, 1, 'Completed', 2, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (3, 3, 4, 'Pending', 3, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (4, 4, 5, 'Rejected', 4, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (5, 5, 3, 'Approved', 5, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+VALUES (1, 1, 2, 'NEW', 1, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (2, 2, 1, 'NEW', 2, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (3, 3, 4, 'NEW', 3, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (4, 4, 5, 'NEW', 4, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (5, 5, 3, 'NEW', 5, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO transfer_products (id, product_variation_id, quantity, transfer_id, created_by, updated_by, created_at,
                                updated_at)

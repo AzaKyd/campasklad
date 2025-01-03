@@ -22,5 +22,6 @@ public class Posting extends BaseEntity{
     @JoinColumn(name = "facility_id", nullable = false)
     private Facility facility;
 
+    @Enumerated(EnumType.STRING)
     private DocumentStatus status;
 }

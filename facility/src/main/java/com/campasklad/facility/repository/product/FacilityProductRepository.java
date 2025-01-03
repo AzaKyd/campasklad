@@ -12,14 +12,14 @@ import java.util.List;
 @Repository
 public interface FacilityProductRepository extends JpaRepository<FacilityProduct, Long> {
     @Query(value = """
-    SELECT fp.product_id AS productId, SUM(fp.quantity) AS totalQuantity
+    SELECT pv.product_id AS productId, SUM(fp.quantity) AS totalQuantity
     FROM facility_products fp
+    JOIN product_variations pv ON fp.product_variation_id = pv.id
     WHERE (:facilityId IS NULL OR fp.facility_id = :facilityId)
-    GROUP BY fp.product_id
-    ORDER BY fp.product_id DESC
+    GROUP BY pv.product_id
+    ORDER BY pv.product_id DESC
     LIMIT :#{#pageable.pageSize} OFFSET :#{#pageable.offset}
-    """,
-            nativeQuery = true)
+    """, nativeQuery = true)
     List<ProductIdsDto> findGroupedProducts(
             Long facilityId,
             Pageable pageable

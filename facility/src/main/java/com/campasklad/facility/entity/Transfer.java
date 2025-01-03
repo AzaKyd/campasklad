@@ -28,5 +28,6 @@ public class Transfer extends BaseEntity{
     @JoinColumn(name = "destination_facility_id", nullable = false)
     Facility destinationFacility;
 
+    @Enumerated(EnumType.STRING)
     DocumentStatus status;
 }

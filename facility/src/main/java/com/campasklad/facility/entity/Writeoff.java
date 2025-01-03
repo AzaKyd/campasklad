@@ -24,5 +24,6 @@ public class Writeoff extends BaseEntity{
     @JoinColumn(name = "facility_id", nullable = false)
     Facility facility;
 
+    @Enumerated(EnumType.STRING)
     DocumentStatus status;
 }
