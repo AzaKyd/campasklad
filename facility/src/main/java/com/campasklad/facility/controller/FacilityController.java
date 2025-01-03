@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class FacilityController {
 
     FacilityService facilityService;
-    ProductApiClient productApiClient;
 
     @GetMapping("/get-facility/{id}")
     public ResponseEntity<FacilityDto> getFacility(@PathVariable Long id) {
