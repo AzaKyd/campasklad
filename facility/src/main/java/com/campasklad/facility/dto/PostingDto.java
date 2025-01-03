@@ -1,6 +1,5 @@
 package com.campasklad.facility.dto;
 
-import com.campasklad.facility.enitity.Facility;
 import com.campasklad.facility.enums.DocumentStatus;
 import lombok.*;
 import lombok.experimental.FieldDefaults;

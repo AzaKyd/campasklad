@@ -1,7 +1,6 @@
 package com.campasklad.products.controller;
 
 
-import com.campasklad.products.dto.SizeDto;
 import com.campasklad.products.dto.SupplierDto;
 import com.campasklad.products.service.SupplierService;
 import lombok.AccessLevel;

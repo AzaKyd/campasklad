@@ -1,7 +1,7 @@
 package com.campasklad.facility.mapper;
 
-import com.campasklad.facility.enitity.Facility;
-import com.campasklad.facility.enitity.Movement;
+import com.campasklad.facility.entity.Facility;
+import com.campasklad.facility.entity.Movement;
 import com.campasklad.facility.dto.MovementDto;
 import com.campasklad.facility.enums.MovementType;
 import org.springframework.stereotype.Component;

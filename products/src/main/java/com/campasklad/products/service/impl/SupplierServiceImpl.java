@@ -1,14 +1,10 @@
 package com.campasklad.products.service.impl;
 
-import com.campasklad.products.dto.SizeDto;
 import com.campasklad.products.dto.SupplierDto;
-import com.campasklad.products.entity.Size;
 import com.campasklad.products.entity.Supplier;
 import com.campasklad.products.exception.BaseException;
 import com.campasklad.products.exception.ExceptionType;
-import com.campasklad.products.mapper.SizeMapper;
 import com.campasklad.products.mapper.SupplierMapper;
-import com.campasklad.products.repository.SizeRepository;
 import com.campasklad.products.repository.SupplierRepository;
 import com.campasklad.products.service.SupplierService;
 import lombok.AccessLevel;

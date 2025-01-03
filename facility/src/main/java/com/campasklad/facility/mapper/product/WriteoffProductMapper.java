@@ -1,7 +1,7 @@
 package com.campasklad.facility.mapper.product;
 
 import com.campasklad.facility.dto.product.WriteoffProductDto;
-import com.campasklad.facility.enitity.product.WriteoffProduct;
+import com.campasklad.facility.entity.product.WriteoffProduct;
 import org.springframework.stereotype.Component;
 
 @Component

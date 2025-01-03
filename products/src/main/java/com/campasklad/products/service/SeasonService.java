@@ -1,6 +1,5 @@
 package com.campasklad.products.service;
 
-import com.campasklad.products.dto.ColorDto;
 import com.campasklad.products.dto.SeasonDto;
 
 import java.util.List;

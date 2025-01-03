@@ -1,8 +1,8 @@
 package com.campasklad.facility.mapper;
 
 import com.campasklad.facility.dto.WriteoffDto;
-import com.campasklad.facility.enitity.Facility;
-import com.campasklad.facility.enitity.Writeoff;
+import com.campasklad.facility.entity.Facility;
+import com.campasklad.facility.entity.Writeoff;
 import org.springframework.stereotype.Component;
 
 @Component

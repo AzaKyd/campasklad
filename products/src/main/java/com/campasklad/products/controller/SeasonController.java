@@ -1,8 +1,6 @@
 package com.campasklad.products.controller;
 
-import com.campasklad.products.dto.ColorDto;
 import com.campasklad.products.dto.SeasonDto;
-import com.campasklad.products.service.ColorService;
 import com.campasklad.products.service.SeasonService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

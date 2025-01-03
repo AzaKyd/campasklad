@@ -1,9 +1,9 @@
 package com.campasklad.facility.service.impl;
 
 import com.campasklad.facility.dto.FacilityDto;
-import com.campasklad.facility.enitity.Facility;
-import com.campasklad.facility.excetion.BaseException;
-import com.campasklad.facility.excetion.ExceptionType;
+import com.campasklad.facility.entity.Facility;
+import com.campasklad.facility.exception.BaseException;
+import com.campasklad.facility.exception.ExceptionType;
 import com.campasklad.facility.mapper.FacilityMapper;
 import com.campasklad.facility.repository.FaciltiyRepository;
 import com.campasklad.facility.service.FacilityService;

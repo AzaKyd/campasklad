@@ -4,8 +4,8 @@ import com.campasklad.facility.dto.internal.ProductIdsDto;
 import com.campasklad.facility.dto.internal.ProductResponseDto;
 import com.campasklad.facility.dto.product.DisplayFacilityProductDto;
 import com.campasklad.facility.dto.product.FacilityProductDto;
-import com.campasklad.facility.enitity.Facility;
-import com.campasklad.facility.enitity.product.FacilityProduct;
+import com.campasklad.facility.entity.Facility;
+import com.campasklad.facility.entity.product.FacilityProduct;
 import org.springframework.stereotype.Component;
 
 @Component

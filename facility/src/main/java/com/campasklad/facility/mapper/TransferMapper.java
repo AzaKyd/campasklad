@@ -2,8 +2,8 @@ package com.campasklad.facility.mapper;
 
 
 import com.campasklad.facility.dto.TransferDto;
-import com.campasklad.facility.enitity.Facility;
-import com.campasklad.facility.enitity.Transfer;
+import com.campasklad.facility.entity.Facility;
+import com.campasklad.facility.entity.Transfer;
 import org.springframework.stereotype.Component;
 
 @Component
