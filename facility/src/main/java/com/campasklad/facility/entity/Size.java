@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Table(name = "sizes")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Size {
+public class Size extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Используется для AUTO_INCREMENT

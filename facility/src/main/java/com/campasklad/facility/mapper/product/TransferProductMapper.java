@@ -1,6 +1,7 @@
 package com.campasklad.facility.mapper.product;
 
 import com.campasklad.facility.dto.product.TransferProductDto;
+import com.campasklad.facility.entity.ProductVariation;
 import com.campasklad.facility.entity.product.TransferProduct;
 import org.springframework.stereotype.Component;
 
@@ -10,15 +11,15 @@ public class TransferProductMapper {
         return TransferProductDto.builder()
                 .id(transferProduct.getId())
                 .quantity(transferProduct.getQuantity())
-                .productVariationId(transferProduct.getProductVariationId())
+                .productVariationId(transferProduct.getProductVariation() != null ? transferProduct.getProductVariation().getId() : null)
                 .build();
     }
 
-    public TransferProduct toEntity(TransferProductDto transferProductDto) {
+    public TransferProduct toEntity(TransferProductDto transferProductDto, ProductVariation productVariation) {
         return TransferProduct.builder()
                 .id(transferProductDto.getId())
                 .quantity(transferProductDto.getQuantity())
-                .productVariationId(transferProductDto.getProductVariationId())
+                .productVariation(productVariation)
                 .build();
     }
 }

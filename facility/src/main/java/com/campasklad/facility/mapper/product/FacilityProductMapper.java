@@ -5,6 +5,7 @@ import com.campasklad.facility.dto.internal.ProductResponseDto;
 import com.campasklad.facility.dto.product.DisplayFacilityProductDto;
 import com.campasklad.facility.dto.product.FacilityProductDto;
 import com.campasklad.facility.entity.Facility;
+import com.campasklad.facility.entity.ProductVariation;
 import com.campasklad.facility.entity.product.FacilityProduct;
 import org.springframework.stereotype.Component;
 
@@ -14,19 +15,17 @@ public class FacilityProductMapper {
     public FacilityProductDto toDto(FacilityProduct facilityProduct) {
         return FacilityProductDto.builder()
                 .id(facilityProduct.getId())
-                .productId(facilityProduct.getProductId())
                 .quantity(facilityProduct.getQuantity())
-                .productVariationId(facilityProduct.getProductVariationId())
+                .productVariationId(facilityProduct.getProductVariation() != null ? facilityProduct.getProductVariation().getId() : null)
                 .facilityId(facilityProduct.getFacility() != null ? facilityProduct.getFacility().getId() : null)
                 .build();
     }
 
-    public FacilityProduct toEntity(FacilityProductDto facilityProductDto, Facility facility) {
+    public FacilityProduct toEntity(FacilityProductDto facilityProductDto, Facility facility, ProductVariation productVariation) {
         return FacilityProduct.builder()
                 .id(facilityProductDto.getId())
-                .productId(facilityProductDto.getProductId())
                 .quantity(facilityProductDto.getQuantity())
-                .productVariationId(facilityProductDto.getProductVariationId())
+                .productVariation(productVariation)
                 .facility(facility)
                 .build();
     }

@@ -1,6 +1,7 @@
 package com.campasklad.facility.mapper.product;
 
 import com.campasklad.facility.dto.product.WriteoffProductDto;
+import com.campasklad.facility.entity.ProductVariation;
 import com.campasklad.facility.entity.product.WriteoffProduct;
 import org.springframework.stereotype.Component;
 
@@ -10,15 +11,15 @@ public class WriteoffProductMapper {
         return WriteoffProductDto.builder()
                 .id(writeoffProduct.getId())
                 .quantity(writeoffProduct.getQuantity())
-                .productVariationId(writeoffProduct.getProductVariationId())
+                .productVariationId(writeoffProduct.getProductVariation() != null ? writeoffProduct.getProductVariation().getId() : null)
                 .build();
     }
 
-    public WriteoffProduct toEntity(WriteoffProductDto writeoffProductDto) {
+    public WriteoffProduct toEntity(WriteoffProductDto writeoffProductDto, ProductVariation productVariation) {
         return WriteoffProduct.builder()
                 .id(writeoffProductDto.getId())
                 .quantity(writeoffProductDto.getQuantity())
-                .productVariationId(writeoffProductDto.getProductVariationId())
+                .productVariation(productVariation)
                 .build();
     }
 }

@@ -6,10 +6,12 @@ import com.campasklad.facility.dto.product.DisplayFacilityProductDto;
 import com.campasklad.facility.dto.product.FacilityProductDto;
 import com.campasklad.facility.dto.internal.ProductIdsDto;
 import com.campasklad.facility.entity.Facility;
+import com.campasklad.facility.entity.ProductVariation;
 import com.campasklad.facility.exception.BaseException;
 import com.campasklad.facility.exception.ExceptionType;
 import com.campasklad.facility.mapper.product.FacilityProductMapper;
 import com.campasklad.facility.repository.FaciltiyRepository;
+import com.campasklad.facility.repository.ProductVariationRepository;
 import com.campasklad.facility.repository.product.FacilityProductRepository;
 import com.campasklad.facility.service.FacilityProductService;
 import lombok.AccessLevel;
@@ -34,13 +36,18 @@ public class FacilityProductServiceImpl implements FacilityProductService {
     FaciltiyRepository faciltiyRepository;
     FacilityProductMapper facilityProductMapper;
     ProductApiClient productApiClient;
+    private final ProductVariationRepository productVariationRepository;
 
 
     @Override
     public void createFacilityProduct(FacilityProductDto facilityProductDto) {
         Facility facility = faciltiyRepository.findById(facilityProductDto.getFacilityId())
                 .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
-        facilityProductRepository.save(facilityProductMapper.toEntity(facilityProductDto, facility));
+
+        ProductVariation productVariation = productVariationRepository.findById(facilityProductDto.getProductVariationId())
+                        .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
+
+        facilityProductRepository.save(facilityProductMapper.toEntity(facilityProductDto, facility, productVariation));
     }
 
     @Override

@@ -14,7 +14,6 @@ import java.math.BigDecimal;
 public class FacilityProductDto {
 
     Long id;
-    Long productId;
     Long quantity;
     Long facilityId;
     Long productVariationId;

@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Table(name = "product_variations")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProductVariation {
+public class ProductVariation extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Используется для AUTO_INCREMENT

@@ -2,6 +2,7 @@ package com.campasklad.facility.entity.product;
 
 import com.campasklad.facility.entity.BaseEntity;
 import com.campasklad.facility.entity.Facility;
+import com.campasklad.facility.entity.ProductVariation;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -21,11 +22,9 @@ public class FacilityProduct extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "product_variation_id", nullable = false)
-    Long productVariationId;
-
-    @Column(name = "product_id", nullable = false)
-    Long productId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_variation_id", nullable = false)
+    ProductVariation productVariation;
 
     @ManyToOne
     @JoinColumn(name = "facility_id", nullable = false, foreignKey = @ForeignKey(name = "fk_facility"))
