@@ -2,15 +2,12 @@ package com.campasklad.facility.service.impl;
 
 import com.campasklad.facility.dto.ProductVariationDto;
 import com.campasklad.facility.entity.Color;
-import com.campasklad.facility.entity.Product;
 import com.campasklad.facility.entity.ProductVariation;
 import com.campasklad.facility.entity.Size;
 import com.campasklad.facility.exception.BaseException;
 import com.campasklad.facility.exception.ExceptionType;
-import com.campasklad.facility.mapper.ProductMapper;
 import com.campasklad.facility.mapper.ProductVariationMapper;
 import com.campasklad.facility.repository.ColorRepository;
-import com.campasklad.facility.repository.ProductRepository;
 import com.campasklad.facility.repository.ProductVariationRepository;
 import com.campasklad.facility.repository.SizeRepository;
 import com.campasklad.facility.service.ProductVariationService;
@@ -44,7 +41,6 @@ public class ProductVariationServiceImpl implements ProductVariationService {
 
         productVariationRepository.save(productVariationMapper.toEntity(
                 productVariationDto,
-                product,
                 size,
                 color
                 )
@@ -68,16 +64,12 @@ public class ProductVariationServiceImpl implements ProductVariationService {
         ProductVariation productVariation = productVariationRepository.findById(productVariationDto.getId())
                 .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
 
-        Product product = productRepository.findById(productVariationDto.getProductId())
-                .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
-
         Size size = sizeRepository.findById(productVariationDto.getSizeId())
                 .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
 
         Color color = colorRepository.findById(productVariationDto.getColorId())
                 .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
 
-        productVariation.setProduct(product);
         productVariation.setSize(size);
         productVariation.setColor(color);
 

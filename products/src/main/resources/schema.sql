@@ -36,28 +36,6 @@ CREATE TABLE seasons
     updated_at TIMESTAMP                                DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE sizes
-(
-    id         LONG PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name       VARCHAR(50)                     NOT NULL,
-
-    created_by LONG                            NOT NULL,
-    updated_by LONG,
-    created_at TIMESTAMP                       NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP                                DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-CREATE TABLE colors
-(
-    id         LONG PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name       VARCHAR(50)                     NOT NULL UNIQUE,
-
-    created_by LONG                            NOT NULL,
-    updated_by LONG,
-    created_at TIMESTAMP                       NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP                                DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
 CREATE TABLE products
 (
     id            LONG PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -81,23 +59,6 @@ CREATE TABLE products
     updated_at    TIMESTAMP                                DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE product_variations
-(
-    id         LONG PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    product_id LONG                          NOT NULL,
-    size_id    LONG                          NOT NULL,
-    color_id   LONG                          NOT NULL,
-    FOREIGN KEY (product_id) REFERENCES products (id),
-    FOREIGN KEY (size_id) REFERENCES sizes (id),
-    FOREIGN KEY (color_id) REFERENCES colors (id),
-
-    created_by LONG                            NOT NULL,
-    updated_by LONG,
-    created_at TIMESTAMP                       NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP                                DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-
 -- Вставка данных в таблицу categories
 INSERT INTO categories (id, name, created_by, created_at)
 VALUES (1, 'Одежда', 1, CURRENT_TIMESTAMP),
@@ -118,20 +79,6 @@ VALUES (1, 'Лето', 1, CURRENT_TIMESTAMP),
        (2, 'Зима', 2, CURRENT_TIMESTAMP),
        (3, 'Весна', 3, CURRENT_TIMESTAMP);
 
--- Вставка данных в таблицу sizes
-INSERT INTO sizes (id, name, created_by, created_at)
-VALUES (1, 'Маленький', 1, CURRENT_TIMESTAMP),
-       (2, 'Средний', 2, CURRENT_TIMESTAMP),
-       (3, 'Большой', 3, CURRENT_TIMESTAMP),
-       (4, 'Очень большой', 1, CURRENT_TIMESTAMP);
-
--- Вставка данных в таблицу colors
-INSERT INTO colors (id, name, created_by, created_at)
-VALUES (1, 'Красный', 1, CURRENT_TIMESTAMP),
-       (2, 'Синий', 2, CURRENT_TIMESTAMP),
-       (3, 'Зелёный', 3, CURRENT_TIMESTAMP),
-       (4, 'Чёрный', 1, CURRENT_TIMESTAMP),
-       (5, 'Белый', 2, CURRENT_TIMESTAMP);
 
 -- Вставка данных в таблицу products
 INSERT INTO products (id, name, barcode, code, category_id, cost_price, selling_price, picture_path, description,
@@ -143,11 +90,4 @@ VALUES (1, 'Футболка', '1234567890', 'TS123', 1, 10.00, 15.00, '/images/
        (3, 'Кроссовки', '5432167890', 'SN789', 3, 40.00, 60.00, '/images/sneakers.jpg', 'Модные кроссовки', 3, 3, 3,
         CURRENT_TIMESTAMP);
 
--- Вставка данных в таблицу product_variations
-INSERT INTO product_variations (id, product_id, size_id, color_id, created_by, created_at)
-VALUES (1, 1, 1, 1, 1, CURRENT_TIMESTAMP), -- Футболка, Маленький, Красный
-       (2, 1, 2, 2, 1, CURRENT_TIMESTAMP), -- Футболка, Средний, Синий
-       (3, 2, 3, 4, 2, CURRENT_TIMESTAMP), -- Куртка, Большой, Чёрный
-       (4, 2, 4, 5, 2, CURRENT_TIMESTAMP), -- Куртка, Очень большой, Белый
-       (5, 3, 2, 3, 3, CURRENT_TIMESTAMP), -- Кроссовки, Средний, Зелёный
-       (6, 3, 3, 1, 3, CURRENT_TIMESTAMP); -- Кроссовки, Большой, Красный
+
