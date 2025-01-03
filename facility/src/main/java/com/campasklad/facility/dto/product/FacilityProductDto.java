@@ -3,6 +3,8 @@ package com.campasklad.facility.dto.product;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Builder
@@ -12,8 +14,8 @@ import lombok.experimental.FieldDefaults;
 public class FacilityProductDto {
 
     Long id;
-    Long productVariationId;
     Long productId;
-    Long facilityId;
     Long quantity;
+    Long facilityId;
+    Long productVariationId;
 }

@@ -14,7 +14,6 @@ import com.campasklad.products.repository.ProductRepository;
 import com.campasklad.products.repository.SeasonRepository;
 import com.campasklad.products.repository.SupplierRepository;
 import com.campasklad.products.service.ProductService;
-import com.campasklad.products.dto.internal.ProductResponseDto;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

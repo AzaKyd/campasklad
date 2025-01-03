@@ -1,4 +1,4 @@
-package com.campasklad.facility.dto.productapiresponse;
+package com.campasklad.facility.dto.internal;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -11,9 +11,9 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProductApiResponse {
+public class ProductResponseDto {
 
-    Long id;
+    Long productId;
     String name;
     String barcode;
     String code;

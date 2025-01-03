@@ -1,5 +1,8 @@
 package com.campasklad.facility.mapper.product;
 
+import com.campasklad.facility.dto.internal.ProductIdsDto;
+import com.campasklad.facility.dto.internal.ProductResponseDto;
+import com.campasklad.facility.dto.product.DisplayFacilityProductDto;
 import com.campasklad.facility.dto.product.FacilityProductDto;
 import com.campasklad.facility.enitity.Facility;
 import com.campasklad.facility.enitity.product.FacilityProduct;
@@ -27,4 +30,24 @@ public class FacilityProductMapper {
                 .facility(facility)
                 .build();
     }
+
+    public DisplayFacilityProductDto toDisplayDto(ProductResponseDto productResponseDto, ProductIdsDto productIdsDto) {
+        return DisplayFacilityProductDto.builder()
+                .productId(productResponseDto.getProductId())
+                .name(productResponseDto.getName())
+                .barcode(productResponseDto.getBarcode())
+                .code(productResponseDto.getCode())
+                .costPrice(productResponseDto.getCostPrice())
+                .sellingPrice(productResponseDto.getSellingPrice())
+                .picturePath(productResponseDto.getPicturePath())
+                .description(productResponseDto.getDescription())
+                .categoryId(productResponseDto.getCategoryId())
+                .categoryName(productResponseDto.getCategoryName())
+                .supplierId(productResponseDto.getSupplierId())
+                .seasonId(productResponseDto.getSeasonId())
+                .totalQuantity(productIdsDto.getTotalQuantity())
+                .build();
+    }
+
+
 }
