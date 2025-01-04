@@ -26,14 +26,14 @@ import java.util.stream.Collectors;
 public class PostingServiceImpl implements PostingService {
 
     PostingRepository postingRepository;
-    PostingMapper postingMapper;
 
     PostingProductRepository postingProductRepository;
     FacilityRepository facilityRepository;
     PostingProductMapper postingProductMapper;
     ProductVariationRepository productVariationRepository;
-    private final SizeRepository sizeRepository;
-    private final ColorRepository colorRepository;
+    SizeRepository sizeRepository;
+    ColorRepository colorRepository;
+    private final PostingMapper postingMapper;
 
     @Override
     public void createPostingProduct(PostingProductRequestDto postingProductRequestDto) {
@@ -79,6 +79,20 @@ public class PostingServiceImpl implements PostingService {
             postingProducts.forEach(product -> product.setPosting(savedPosting));
             postingProductRepository.saveAll(postingProducts);
         }
+    }
+
+    @Override
+    public PostingProductRequestDto getPostingProducts(Long id) {
+        Posting posting = postingRepository.findById(id)
+                .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
+        List<PostingProductDto> postingProductDtos = postingProductRepository.findAllByPostingId(posting.getId())
+                .stream().map(postingProductMapper::toDto).toList();
+
+        PostingProductRequestDto postingProductRequestDto = new PostingProductRequestDto();
+        postingProductRequestDto.setPostingDto(postingMapper.toDto(posting));
+        postingProductRequestDto.setPostingProductDtos(postingProductDtos);
+
+        return postingProductRequestDto;
     }
 
     private List<PostingProductDto> consolidateProducts(List<PostingProductDto> postingProductRequestDto) {

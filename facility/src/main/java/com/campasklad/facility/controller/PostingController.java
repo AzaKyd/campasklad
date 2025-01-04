@@ -19,7 +19,7 @@ public class PostingController {
 
     PostingService postingService;
 
-    @PostMapping("create-posting")
+    @PostMapping("/create-posting")
     public ResponseEntity<Void> createPosting(@RequestBody PostingProductRequestDto postingProductRequestDto) {
         postingService.createPostingProduct(postingProductRequestDto);
         return ResponseEntity.ok().build();
