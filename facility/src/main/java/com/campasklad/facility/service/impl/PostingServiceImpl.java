@@ -17,8 +17,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -42,8 +44,24 @@ public class PostingServiceImpl implements PostingService {
 
         Long postingId = postingProductRequestDto.getPostingDto().getId();
         DocumentStatus status = postingProductRequestDto.getPostingDto().getStatus();
-        List<PostingProductDto> postingProductDtos = postingProductRequestDto.getPostingProductDtos();
 
+        // TODO
+        List<PostingProductDto> postingProductDtos = postingProductRequestDto.getPostingProductDtos().stream()
+                .collect(Collectors.groupingBy(
+                        product -> Arrays.asList(product.getProductId(), product.getSizeId(), product.getColorId()), // Ключ: уникальная комбинация
+                        Collectors.reducing(
+                                new PostingProductDto(), // Инициализация
+                                product -> product, // Маппер: сам объект
+                                (product1, product2) -> { // Суммируем количество
+                                    product1.setQuantity(product1.getQuantity() + product2.getQuantity());
+                                    return product1;
+                                }
+                        )
+                ))
+                .values()
+                .stream()
+                .filter(dto -> dto.getProductId() != null) // Фильтруем пустые записи (инициализацию)
+                .toList();
 
         if (DocumentStatus.NEW.equals(status) && Objects.isNull(postingId)) {
             Posting newPosting = Posting.builder()
@@ -61,12 +79,14 @@ public class PostingServiceImpl implements PostingService {
 
                         ProductVariation productVariation = productVariationRepository
                                 .findProductVariationByProductIdAndSizeAndColor(dto.getProductId(), size, color)
-                                .orElseGet(() -> ProductVariation.builder()
+                                .orElseGet(() -> {
+                                    ProductVariation newVariation = ProductVariation.builder()
                                             .productId(dto.getProductId())
                                             .size(size)
                                             .color(color)
-                                            .build()
-                                );
+                                            .build();
+                                    return productVariationRepository.save(newVariation); // Сохраняем новый ProductVariation
+                                });
 
                         return postingProductMapper.toEntity(dto, productVariation);
                     })
