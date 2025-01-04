@@ -17,9 +17,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,22 +44,7 @@ public class PostingServiceImpl implements PostingService {
         DocumentStatus status = postingProductRequestDto.getPostingDto().getStatus();
 
         // TODO
-        List<PostingProductDto> postingProductDtos = postingProductRequestDto.getPostingProductDtos().stream()
-                .collect(Collectors.groupingBy(
-                        product -> Arrays.asList(product.getProductId(), product.getSizeId(), product.getColorId()), // Ключ: уникальная комбинация
-                        Collectors.reducing(
-                                new PostingProductDto(), // Инициализация
-                                product -> product, // Маппер: сам объект
-                                (product1, product2) -> { // Суммируем количество
-                                    product1.setQuantity(product1.getQuantity() + product2.getQuantity());
-                                    return product1;
-                                }
-                        )
-                ))
-                .values()
-                .stream()
-                .filter(dto -> dto.getProductId() != null) // Фильтруем пустые записи (инициализацию)
-                .toList();
+        List<PostingProductDto> postingProductDtos = consolidateProducts(postingProductRequestDto.getPostingProductDtos());
 
         if (DocumentStatus.NEW.equals(status) && Objects.isNull(postingId)) {
             Posting newPosting = Posting.builder()
@@ -96,5 +79,24 @@ public class PostingServiceImpl implements PostingService {
             postingProducts.forEach(product -> product.setPosting(savedPosting));
             postingProductRepository.saveAll(postingProducts);
         }
+    }
+
+    private List<PostingProductDto> consolidateProducts(List<PostingProductDto> postingProductRequestDto) {
+        Map<String, PostingProductDto> productMap = new HashMap<>();
+
+        for (PostingProductDto dto : postingProductRequestDto) {
+            String key = dto.getProductId() + "-" + dto.getSizeId() + "-" + dto.getColorId();
+
+            if (productMap.containsKey(key)) {
+                // Если объект с таким ключом уже существует, суммируем количество
+                PostingProductDto existing = productMap.get(key);
+                existing.setQuantity(existing.getQuantity() + dto.getQuantity());
+            } else {
+                // Если объекта нет, добавляем новый
+                productMap.put(key, dto);
+            }
+        }
+
+        return new ArrayList<>(productMap.values());
     }
 }
