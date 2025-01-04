@@ -23,10 +23,10 @@ public class ProductVariation extends BaseEntity {
     Long productId;
 
     @ManyToOne
-    @JoinColumn(name = "size_id", nullable = false) // Ссылка на таблицу sizes
+    @JoinColumn(name = "size_id", nullable = false)
     Size size;
 
     @ManyToOne
-    @JoinColumn(name = "color_id", nullable = false) // Ссылка на таблицу colors
+    @JoinColumn(name = "color_id", nullable = false)
     Color color;
 }

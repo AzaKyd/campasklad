@@ -17,6 +17,7 @@ public class Facility extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
     Long id;
 
     @Column(nullable = false)

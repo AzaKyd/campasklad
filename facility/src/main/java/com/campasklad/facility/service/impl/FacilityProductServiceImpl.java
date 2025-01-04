@@ -10,7 +10,7 @@ import com.campasklad.facility.entity.ProductVariation;
 import com.campasklad.facility.exception.BaseException;
 import com.campasklad.facility.exception.ExceptionType;
 import com.campasklad.facility.mapper.product.FacilityProductMapper;
-import com.campasklad.facility.repository.FaciltiyRepository;
+import com.campasklad.facility.repository.FacilityRepository;
 import com.campasklad.facility.repository.ProductVariationRepository;
 import com.campasklad.facility.repository.product.FacilityProductRepository;
 import com.campasklad.facility.service.FacilityProductService;
@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 public class FacilityProductServiceImpl implements FacilityProductService {
 
     FacilityProductRepository facilityProductRepository;
-    FaciltiyRepository faciltiyRepository;
+    FacilityRepository facilityRepository;
     FacilityProductMapper facilityProductMapper;
     ProductApiClient productApiClient;
     private final ProductVariationRepository productVariationRepository;
@@ -41,7 +41,7 @@ public class FacilityProductServiceImpl implements FacilityProductService {
 
     @Override
     public void createFacilityProduct(FacilityProductDto facilityProductDto) {
-        Facility facility = faciltiyRepository.findById(facilityProductDto.getFacilityId())
+        Facility facility = facilityRepository.findById(facilityProductDto.getFacilityId())
                 .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
 
         ProductVariation productVariation = productVariationRepository.findById(facilityProductDto.getProductVariationId())

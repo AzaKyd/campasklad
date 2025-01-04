@@ -5,7 +5,7 @@ import com.campasklad.facility.entity.Facility;
 import com.campasklad.facility.exception.BaseException;
 import com.campasklad.facility.exception.ExceptionType;
 import com.campasklad.facility.mapper.FacilityMapper;
-import com.campasklad.facility.repository.FaciltiyRepository;
+import com.campasklad.facility.repository.FacilityRepository;
 import com.campasklad.facility.service.FacilityService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class FacilityServiceImpl implements FacilityService {
 
-    FaciltiyRepository facilityRepository;
+    FacilityRepository facilityRepository;
     FacilityMapper facilityMapper;
 
 

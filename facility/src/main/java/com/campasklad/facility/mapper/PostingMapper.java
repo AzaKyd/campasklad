@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PostingMapper {
 
-    public PostingDto toPostingDto(Posting posting) {
+    public PostingDto toDto(Posting posting) {
         return PostingDto.builder()
                 .id(posting.getId())
                 .facilityId(posting.getFacility() != null ? posting.getFacility().getId() : null)
@@ -16,7 +16,7 @@ public class PostingMapper {
                 .build();
     }
 
-    public Posting toPosting(PostingDto postingDto, Facility facility) {
+    public Posting toEntity(PostingDto postingDto, Facility facility) {
         return Posting.builder()
                 .id(postingDto.getId())
                 .facility(facility)
