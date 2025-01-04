@@ -9,4 +9,6 @@ public interface PostingService {
     void createPostingProduct(PostingProductRequestDto postingProductRequestDto);
 
     PostingProductRequestDto getPostingProducts(Long id);
+
+    void updatePosting(PostingProductRequestDto postingProductRequestDto);
 }

@@ -82,6 +82,56 @@ public class PostingServiceImpl implements PostingService {
     }
 
     @Override
+    public void updatePosting(PostingProductRequestDto postingProductRequestDto) {
+        Long postingId = postingProductRequestDto.getPostingDto().getId();
+        Posting posting = postingRepository.findById(postingId)
+                .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
+
+        Facility facility = facilityRepository.findById(postingProductRequestDto.getPostingDto().getFacilityId())
+                .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
+
+
+        DocumentStatus status = postingProductRequestDto.getPostingDto().getStatus();
+
+        // TODO
+        List<PostingProductDto> postingProductDtos = consolidateProducts(postingProductRequestDto.getPostingProductDtos());
+
+        if (DocumentStatus.NEW.equals(status) && Objects.isNull(postingId)) {
+            Posting newPosting = Posting.builder()
+                    .status(DocumentStatus.NEW)
+                    .facility(facility)
+                    .build();
+
+            List<PostingProduct> postingProducts = postingProductDtos.stream()
+                    .map(dto -> {
+                        Size size = sizeRepository.findById(dto.getSizeId())
+                                .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
+
+                        Color color = colorRepository.findById(dto.getColorId())
+                                .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
+
+                        ProductVariation productVariation = productVariationRepository
+                                .findProductVariationByProductIdAndSizeAndColor(dto.getProductId(), size, color)
+                                .orElseGet(() -> {
+                                    ProductVariation newVariation = ProductVariation.builder()
+                                            .productId(dto.getProductId())
+                                            .size(size)
+                                            .color(color)
+                                            .build();
+                                    return productVariationRepository.save(newVariation); // Сохраняем новый ProductVariation
+                                });
+
+                        return postingProductMapper.toEntity(dto, productVariation);
+                    })
+                    .toList();
+
+            Posting savedPosting = postingRepository.save(newPosting);
+            postingProducts.forEach(product -> product.setPosting(savedPosting));
+            postingProductRepository.saveAll(postingProducts);
+        }
+    }
+
+    @Override
     public PostingProductRequestDto getPostingProducts(Long id) {
         Posting posting = postingRepository.findById(id)
                 .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));

@@ -6,10 +6,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,8 +16,20 @@ public class PostingController {
 
     PostingService postingService;
 
+    @GetMapping("/get-posting/{id}")
+    public ResponseEntity<PostingProductRequestDto> getPosting(@PathVariable Long id) {
+        postingService.getPostingProducts(id);
+        return ResponseEntity.ok().body(postingService.getPostingProducts(id));
+    }
+
     @PostMapping("/create-posting")
     public ResponseEntity<Void> createPosting(@RequestBody PostingProductRequestDto postingProductRequestDto) {
+        postingService.createPostingProduct(postingProductRequestDto);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/update-posting")
+    public ResponseEntity<Void> updatePosting(@RequestBody PostingProductRequestDto postingProductRequestDto) {
         postingService.createPostingProduct(postingProductRequestDto);
         return ResponseEntity.ok().build();
     }
