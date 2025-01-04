@@ -1,6 +1,5 @@
 package com.campasklad.facility.dto.product;
 
-import com.campasklad.facility.utils.ProductAttributes;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -10,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PostingProductDto implements ProductAttributes {
+public class PostingProductDto {
 
     Long id;
     Long productId;

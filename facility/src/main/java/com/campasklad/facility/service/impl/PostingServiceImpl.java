@@ -12,7 +12,6 @@ import com.campasklad.facility.mapper.product.PostingProductMapper;
 import com.campasklad.facility.repository.*;
 import com.campasklad.facility.repository.product.PostingProductRepository;
 import com.campasklad.facility.service.PostingService;
-import com.campasklad.facility.utils.ProductUtils;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -43,10 +42,8 @@ public class PostingServiceImpl implements PostingService {
 
         Long postingId = postingProductRequestDto.getPostingDto().getId();
         DocumentStatus status = postingProductRequestDto.getPostingDto().getStatus();
-        List<PostingProductDto> postingProductDtos = postingProductRequestDto.getPostingProductDtos(); // Ваши данные
+        List<PostingProductDto> postingProductDtos = postingProductRequestDto.getPostingProductDtos();
 
-        // Универсальный метод работает с любым типом, реализующим ProductIdentifiable
-        List<PostingProductDto> consolidatedDtos = ProductUtils.consolidateProducts(postingProductDtos);
 
         if (DocumentStatus.NEW.equals(status) && Objects.isNull(postingId)) {
             Posting newPosting = Posting.builder()
