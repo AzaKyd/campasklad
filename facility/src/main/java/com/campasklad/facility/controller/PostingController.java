@@ -22,6 +22,19 @@ public class PostingController {
         return ResponseEntity.ok().body(postingService.getPostingProducts(id));
     }
 
+    @GetMapping("/delete")
+    public ResponseEntity<PostingProductRequestDto> deletePosting(@RequestParam Long id) {
+        postingService.getPostingProducts(id);
+        return ResponseEntity.ok().body(postingService.getPostingProducts(id));
+    }
+
+    @GetMapping("/filter-posting")
+    public ResponseEntity<PostingProductRequestDto> filterPosting(@RequestParam Long id) {
+        postingService.getPostingProducts(id);
+        return ResponseEntity.ok().body(postingService.getPostingProducts(id));
+    }
+
+
     @PostMapping("/create-posting")
     public ResponseEntity<Void> createPosting(@RequestBody PostingProductRequestDto postingProductRequestDto) {
         postingService.createPostingProduct(postingProductRequestDto);

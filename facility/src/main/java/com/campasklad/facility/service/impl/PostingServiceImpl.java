@@ -133,7 +133,7 @@ public class PostingServiceImpl implements PostingService {
         // Identify and delete removed PostingProducts
         List<PostingProduct> toDelete = currentPostingProducts.stream()
                 .filter(product -> !updatedProductVariationIds.contains(product.getProductVariation().getId()))
-                .collect(Collectors.toList());
+                .toList();
 
         // Save changes
         postingProductRepository.deleteAll(toDelete);
