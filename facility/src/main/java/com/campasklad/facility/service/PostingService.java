@@ -6,13 +6,11 @@ import com.campasklad.facility.dto.request.PostingProductRequestDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
-
 public interface PostingService {
 
     void createPostingProduct(PostingProductRequestDto postingProductRequestDto);
 
-    PostingProductRequestDto getPostingProducts(Long id);
+    PostingProductRequestDto getPostingById(Long id);
 
     void updatePosting(PostingProductRequestDto postingProductRequestDto);
 
@@ -20,5 +18,5 @@ public interface PostingService {
 
     void approvePosting(Long id);
 
-    Page<PostingDto> getPostingProducts(PostingFilterDto postingFilterDto, Pageable pageable);
+    Page<PostingDto> getFilteredPosting(PostingFilterDto postingFilterDto, Pageable pageable);
 }

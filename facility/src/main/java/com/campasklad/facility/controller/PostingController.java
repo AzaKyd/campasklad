@@ -23,22 +23,21 @@ public class PostingController {
 
     @GetMapping("/get-posting/{id}")
     public ResponseEntity<PostingProductRequestDto> getPosting(@PathVariable Long id) {
-        postingService.getPostingProducts(id);
-        return ResponseEntity.ok().body(postingService.getPostingProducts(id));
+        postingService.getPostingById(id);
+        return ResponseEntity.ok().body(postingService.getPostingById(id));
     }
 
     @GetMapping("/delete")
     public ResponseEntity<PostingProductRequestDto> deletePosting(@RequestParam Long id) {
-        postingService.getPostingProducts(id);
-        return ResponseEntity.ok().body(postingService.getPostingProducts(id));
+        postingService.deletePosting(id);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/filter-posting")
-    public ResponseEntity<Page<PostingDto>> filterProducts(@RequestBody PostingFilterDto productFilterDto,
+    public ResponseEntity<Page<PostingDto>> filterPosting(@RequestBody PostingFilterDto productFilterDto,
                                                            @PageableDefault Pageable pageable) {
-        return ResponseEntity.ok().body(postingService.getPostingProducts(productFilterDto, pageable));
+        return ResponseEntity.ok().body(postingService.getFilteredPosting(productFilterDto, pageable));
     }
-
 
     @PostMapping("/create-posting")
     public ResponseEntity<Void> createPosting(@RequestBody PostingProductRequestDto postingProductRequestDto) {
@@ -48,7 +47,13 @@ public class PostingController {
 
     @PostMapping("/update-posting")
     public ResponseEntity<Void> updatePosting(@RequestBody PostingProductRequestDto postingProductRequestDto) {
-        postingService.createPostingProduct(postingProductRequestDto);
+        postingService.updatePosting(postingProductRequestDto);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/approve")
+    public ResponseEntity<Void> approvePosting(@RequestParam Long id) {
+        postingService.approvePosting(id);
         return ResponseEntity.ok().build();
     }
 }

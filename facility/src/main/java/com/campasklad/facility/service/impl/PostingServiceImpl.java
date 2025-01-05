@@ -178,16 +178,16 @@ public class PostingServiceImpl implements PostingService {
     }
 
     @Override
-    public Page<PostingDto> getPostingProducts(PostingFilterDto postingFilterDto, Pageable pageable) {
+    public Page<PostingDto> getFilteredPosting(PostingFilterDto postingFilterDto, Pageable pageable) {
         Specification<Posting> specification = PostingFilterDto.filterPostings(postingFilterDto);
 
-        Page<Posting> productPage = postingRepository.findWithFilter(specification, pageable);
-        return null;
+        Page<Posting> postingPage = postingRepository.findWithFilter(specification, pageable);
+        return postingPage.map(postingMapper::toDto);
     }
 
 
     @Override
-    public PostingProductRequestDto getPostingProducts(Long id) {
+    public PostingProductRequestDto getPostingById(Long id) {
         Posting posting = postingRepository.findById(id)
                 .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
         List<PostingProductDto> postingProductDtos = postingProductRepository.findAllByPostingId(posting.getId())
