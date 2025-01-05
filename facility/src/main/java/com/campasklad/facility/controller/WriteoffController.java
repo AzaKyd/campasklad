@@ -1,13 +1,8 @@
 package com.campasklad.facility.controller;
 
-import com.campasklad.facility.dto.PostingDto;
 import com.campasklad.facility.dto.WriteoffDto;
-import com.campasklad.facility.dto.filter.PostingFilterDto;
 import com.campasklad.facility.dto.filter.WriteoffFilterDto;
-import com.campasklad.facility.dto.request.PostingProductRequestDto;
 import com.campasklad.facility.dto.request.WriteoffProductRequestDto;
-import com.campasklad.facility.entity.Writeoff;
-import com.campasklad.facility.service.PostingService;
 import com.campasklad.facility.service.WriteoffService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +15,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/facility")
+@RequestMapping("/api/facility/writeoff")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class WriteoffController {
     WriteoffService writeoffService;
 
-    @GetMapping("/get-posting/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<WriteoffProductRequestDto> getPosting(@PathVariable Long id) {
         return ResponseEntity.ok().body(writeoffService.getWriteoffById(id));
     }
@@ -36,19 +31,19 @@ public class WriteoffController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/filter-posting")
+    @GetMapping("/filter")
     public ResponseEntity<Page<WriteoffDto>> filterPosting(@RequestBody WriteoffFilterDto writeoffFilterDto,
                                                            @PageableDefault Pageable pageable) {
         return ResponseEntity.ok().body(writeoffService.getFilteredWriteoff(writeoffFilterDto, pageable));
     }
 
-    @PostMapping("/create-posting")
+    @PostMapping("/creat")
     public ResponseEntity<Void> createPosting(@RequestBody WriteoffProductRequestDto writeoffProductRequestDto) {
         writeoffService.createWriteoff(writeoffProductRequestDto);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/update-posting")
+    @PostMapping("/update")
     public ResponseEntity<Void> updatePosting(@RequestBody WriteoffProductRequestDto writeoffProductRequestDto) {
         writeoffService.updateWriteoff(writeoffProductRequestDto);
         return ResponseEntity.ok().build();
