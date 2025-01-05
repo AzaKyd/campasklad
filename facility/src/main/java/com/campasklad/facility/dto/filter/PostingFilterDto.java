@@ -32,7 +32,7 @@ public class PostingFilterDto {
             Predicate predicate = criteriaBuilder.conjunction();
 
             if (filterDto.getStatus() != null) {
-                predicate = criteriaBuilder.equal(criteriaBuilder.lower(root.get("status")), filterDto.getStatus())
+                predicate = criteriaBuilder.equal(criteriaBuilder.lower(root.get("status")), filterDto.getStatus());
 
             }
 
