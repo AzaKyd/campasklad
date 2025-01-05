@@ -1,6 +1,7 @@
 package com.campasklad.facility.service.impl;
 
 import com.campasklad.facility.dto.PostingDto;
+import com.campasklad.facility.dto.filter.PostingFilterDto;
 import com.campasklad.facility.dto.product.PostingProductDto;
 import com.campasklad.facility.dto.request.PostingProductRequestDto;
 import com.campasklad.facility.entity.*;
@@ -20,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -176,7 +178,10 @@ public class PostingServiceImpl implements PostingService {
     }
 
     @Override
-    public Page<PostingDto> getPostingProducts(Pageable pageable) {
+    public Page<PostingDto> getPostingProducts(PostingFilterDto postingFilterDto, Pageable pageable) {
+        Specification<Posting> specification = PostingFilterDto.filterPostings(postingFilterDto);
+
+        Page<Posting> productPage = postingRepository.findWithFilter(specification, pageable);
         return null;
     }
 

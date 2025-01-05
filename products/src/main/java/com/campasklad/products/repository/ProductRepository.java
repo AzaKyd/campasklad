@@ -17,6 +17,6 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
         if(pageable.getSort().isUnsorted()){
             pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Order.desc("id")));
         }
-        return findAll(specification,pageable);
+        return findAll(specification, pageable);
     }
 }

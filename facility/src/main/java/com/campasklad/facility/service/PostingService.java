@@ -1,6 +1,7 @@
 package com.campasklad.facility.service;
 
 import com.campasklad.facility.dto.PostingDto;
+import com.campasklad.facility.dto.filter.PostingFilterDto;
 import com.campasklad.facility.dto.request.PostingProductRequestDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,5 +20,5 @@ public interface PostingService {
 
     void approvePosting(Long id);
 
-    Page<PostingDto> getPostingProducts(Pageable pageable);
+    Page<PostingDto> getPostingProducts(PostingFilterDto postingFilterDto, Pageable pageable);
 }

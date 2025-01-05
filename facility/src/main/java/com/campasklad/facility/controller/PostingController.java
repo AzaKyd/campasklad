@@ -1,10 +1,15 @@
 package com.campasklad.facility.controller;
 
+import com.campasklad.facility.dto.PostingDto;
+import com.campasklad.facility.dto.filter.PostingFilterDto;
 import com.campasklad.facility.dto.request.PostingProductRequestDto;
 import com.campasklad.facility.service.PostingService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,9 +34,9 @@ public class PostingController {
     }
 
     @GetMapping("/filter-posting")
-    public ResponseEntity<PostingProductRequestDto> filterPosting(@RequestParam Long id) {
-        postingService.getPostingProducts(id);
-        return ResponseEntity.ok().body(postingService.getPostingProducts(id));
+    public ResponseEntity<Page<PostingDto>> filterProducts(@RequestBody PostingFilterDto productFilterDto,
+                                                           @PageableDefault Pageable pageable) {
+        return ResponseEntity.ok().body(postingService.getPostingProducts(productFilterDto, pageable));
     }
 
 
