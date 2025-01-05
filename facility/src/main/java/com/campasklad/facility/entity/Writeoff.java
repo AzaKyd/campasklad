@@ -1,6 +1,7 @@
 package com.campasklad.facility.entity;
 
 import com.campasklad.facility.enums.DocumentStatus;
+import com.campasklad.facility.enums.WriteoffReason;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -26,4 +27,8 @@ public class Writeoff extends BaseEntity{
 
     @Enumerated(EnumType.STRING)
     DocumentStatus status;
+
+    WriteoffReason writeoffReason;
+
+    String massage;
 }
