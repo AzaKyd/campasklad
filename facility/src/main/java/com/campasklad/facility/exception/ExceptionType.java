@@ -14,7 +14,8 @@ public enum ExceptionType {
     ENTITY_NOT_FOUND(HttpStatus.BAD_REQUEST, "Entity not found"),
     VALIDATION_ERROR(HttpStatus.BAD_REQUEST, "Validation failed"),
     ACCESS_DENIED(HttpStatus.BAD_REQUEST, "Access denied"),
-    POSTING_IS_ALREADY_SAVED(HttpStatus.BAD_REQUEST, "Access denied");
+    POSTING_IS_ALREADY_SAVED(HttpStatus.BAD_REQUEST, "Оприходование уже сохранено"),
+    POSTING_IS_ALREADY_APPROVED(HttpStatus.BAD_REQUEST, "Оприходование уже сохранено");
 
     HttpStatus code;
     String message;

@@ -1,8 +1,10 @@
 package com.campasklad.facility.service.impl;
 
+import com.campasklad.facility.dto.PostingDto;
 import com.campasklad.facility.dto.product.PostingProductDto;
 import com.campasklad.facility.dto.request.PostingProductRequestDto;
 import com.campasklad.facility.entity.*;
+import com.campasklad.facility.entity.product.FacilityProduct;
 import com.campasklad.facility.entity.product.PostingProduct;
 import com.campasklad.facility.enums.DocumentStatus;
 import com.campasklad.facility.exception.BaseException;
@@ -10,11 +12,14 @@ import com.campasklad.facility.exception.ExceptionType;
 import com.campasklad.facility.mapper.PostingMapper;
 import com.campasklad.facility.mapper.product.PostingProductMapper;
 import com.campasklad.facility.repository.*;
+import com.campasklad.facility.repository.product.FacilityProductRepository;
 import com.campasklad.facility.repository.product.PostingProductRepository;
 import com.campasklad.facility.service.PostingService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -26,15 +31,16 @@ import java.util.stream.Collectors;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class PostingServiceImpl implements PostingService {
 
+    PostingMapper postingMapper;
     PostingRepository postingRepository;
-
+    PostingProductMapper postingProductMapper;
     PostingProductRepository postingProductRepository;
     FacilityRepository facilityRepository;
-    PostingProductMapper postingProductMapper;
+    FacilityProductRepository facilityProductRepository;
     ProductVariationRepository productVariationRepository;
     SizeRepository sizeRepository;
     ColorRepository colorRepository;
-    private final PostingMapper postingMapper;
+
 
     @Override
     public void createPostingProduct(PostingProductRequestDto postingProductRequestDto) {
@@ -145,6 +151,35 @@ public class PostingServiceImpl implements PostingService {
         postingRepository.save(posting);
     }
 
+    @Override
+    public void deletePosting(Long id) {
+        postingProductRepository.deleteAllByPostingId(id);
+        postingRepository.deleteById(id);
+    }
+
+    @Override
+    public void approvePosting(Long postingId) {
+        Posting posting = postingRepository.findById(postingId)
+                .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
+
+        if(DocumentStatus.APPROVED.equals(posting.getStatus())) {
+            throw new BaseException(ExceptionType.POSTING_IS_ALREADY_APPROVED);
+        }
+
+        Facility facility = facilityRepository.findById(posting.getFacility().getId())
+                .orElseThrow(() -> new BaseException(ExceptionType.ENTITY_NOT_FOUND));
+
+        List<PostingProduct> postingProducts = postingProductRepository.findAllByPostingId(postingId);
+        List<FacilityProduct> facilityProducts = mapPostingProductsToFacilityProducts(postingProducts, facility);
+
+        facilityProductRepository.saveAll(facilityProducts);
+    }
+
+    @Override
+    public Page<PostingDto> getPostingProducts(Pageable pageable) {
+        return null;
+    }
+
 
     @Override
     public PostingProductRequestDto getPostingProducts(Long id) {
@@ -187,6 +222,15 @@ public class PostingServiceImpl implements PostingService {
                 .toList();
     }
 
+    private List<FacilityProduct> mapPostingProductsToFacilityProducts(List<PostingProduct> postingProducts, Facility facility) {
+        return postingProducts.stream()
+                .map(postingProduct -> FacilityProduct.builder()
+                        .productVariation(postingProduct.getProductVariation())
+                        .facility(facility)
+                        .quantity(postingProduct.getQuantity())
+                        .build())
+                .collect(Collectors.toList());
+    }
 
     private List<PostingProductDto> consolidateProducts(List<PostingProductDto> postingProductRequestDto) {
         Map<String, PostingProductDto> productMap = new HashMap<>();

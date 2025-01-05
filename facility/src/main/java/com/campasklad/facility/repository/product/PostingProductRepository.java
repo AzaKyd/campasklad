@@ -10,4 +10,6 @@ import java.util.List;
 public interface PostingProductRepository extends JpaRepository<PostingProduct, Long> {
 
     List<PostingProduct> findAllByPostingId(Long postingId);
+
+    void deleteAllByPostingId(Long postingId);
 }
