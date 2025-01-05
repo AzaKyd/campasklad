@@ -12,7 +12,10 @@ import lombok.experimental.FieldDefaults;
 public class WriteoffProductDto {
 
     Long id;
+    Long productId;
     Long productVariationId;
+    Long sizeId;
+    Long colorId;
     Long quantity;
-    Long writeoff;
+    Long writeoffId;
 }
