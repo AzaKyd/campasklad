@@ -2,6 +2,7 @@ package com.campasklad.facility.dto;
 
 import com.campasklad.facility.enums.DocumentStatus;
 import com.campasklad.facility.enums.WriteoffReason;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -11,7 +12,6 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Json
 public class WriteoffDto {
 
     Long id;

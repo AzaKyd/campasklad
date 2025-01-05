@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonFormat(shape = JsonFormat.Shape.STRING)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PostingFilterDto {
 
