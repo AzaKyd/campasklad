@@ -24,7 +24,7 @@ public class PostingProduct extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_variation_id", nullable = false)
-    private ProductVariation productVariation;
+    ProductVariation productVariation;
 
     @Column(nullable = false)
     Long quantity;
