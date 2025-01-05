@@ -11,7 +11,10 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TransferProductDto {
     Long id;
+    Long productId;
     Long productVariationId;
+    Long sizeId;
+    Long colorId;
     Long quantity;
     Long transferId;
 }
